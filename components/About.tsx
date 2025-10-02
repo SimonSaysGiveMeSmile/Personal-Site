@@ -41,7 +41,7 @@ export default function About() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">About Me</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            I'm a technical founder and AI engineer passionate about building intelligent systems
+            I&apos;m a technical founder and AI engineer passionate about building intelligent systems
             that enhance human experiences. With a background spanning computer vision research,
             autonomous systems, and entrepreneurship, I bring ideas to life through cutting-edge technology.
           </p>
@@ -72,19 +72,19 @@ export default function About() {
           <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Background</h3>
           <div className="space-y-4 text-gray-600 leading-relaxed">
             <p>
-              Currently serving as CEO with 79% equity in my latest venture, I'm building at the intersection
+              Currently serving as CEO with 79% equity in my latest venture, I&apos;m building at the intersection
               of AI and physical products. My journey includes founding SkyrisAI (YC top 10%), where I designed
-              the world's flying AI pet with emotional intelligence, and FreeRange Drones (YC interviewee), an
+              the world&apos;s flying AI pet with emotional intelligence, and FreeRange Drones (YC interviewee), an
               autonomous delivery network powered by LLMs.
             </p>
             <p>
-              I completed my Master's in Systems Engineering and Data Science at Cornell in half the typical time
+              I completed my Master&apos;s in Systems Engineering and Data Science at Cornell in half the typical time
               while managing research, startups, and maintaining the highest GPA. My technical foundation comes
-              from hands-on experience at companies like ByteDance, Bombardier Aerospace, and UC San Diego's
+              from hands-on experience at companies like ByteDance, Bombardier Aerospace, and UC San Diego&apos;s
               Computer Vision lab.
             </p>
             <p>
-              Beyond startups, I've won hackathons, published research on semantic segmentation and autonomous
+              Beyond startups, I&apos;ve won hackathons, published research on semantic segmentation and autonomous
               driving, and contributed to open-source innovations like implementing VR in the Carla simulator
               for the first time.
             </p>

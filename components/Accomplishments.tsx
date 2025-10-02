@@ -82,14 +82,17 @@ export default function Accomplishments() {
         {
           title: "Ventures Accelerated - Alumni",
           description: "Completed entrepreneurship accelerator program",
+          date: "",
         },
         {
           title: "CVEC - Partner",
           description: "Active partner in Cornell Venture Capital ecosystem",
+          date: "",
         },
         {
           title: "Cornell Maker Club & Chorale",
           description: "Member of Maker Club and 1st Violin in Cornell Chorale",
+          date: "",
         },
       ],
     },

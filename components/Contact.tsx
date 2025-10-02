@@ -65,7 +65,7 @@ export default function Contact() {
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Get In Touch</h2>
           <p className="text-lg text-gray-600">
-            Let's build something amazing together
+            Let&apos;s build something amazing together
           </p>
         </motion.div>
 
