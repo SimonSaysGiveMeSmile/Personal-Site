@@ -3,9 +3,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import { ExternalLink, Github, FileText, Video } from "lucide-react";
+import { useState } from "react";
 
 export default function Projects() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
   const projects = [
     {
@@ -18,6 +20,7 @@ export default function Projects() {
         { type: "website", url: "https://skyrisai.com/", icon: <ExternalLink size={16} /> },
       ],
       image: "/placeholder-skyris.jpg",
+      category: "startup",
     },
     {
       title: "FreeRange - Autonomous Drone Delivery",
@@ -30,61 +33,94 @@ export default function Projects() {
         { type: "demo", url: "https://cornell.box.com/s/czzblhzs7kq8mblfdvei9tt6ip4z7xkz", icon: <FileText size={16} /> },
       ],
       image: "/placeholder-freerange.jpg",
+      category: "startup",
     },
     {
-      title: "IDS Lab VR Testbed",
+      title: "VR-Enhanced Autonomous Vehicle Testing",
       period: "Sep 2023 - Dec 2024",
       description:
-        "Single-handedly implemented VR into Carla simulator using Python for the first time on the internet. Enables immersive testing of autonomous driving systems.",
-      tags: ["VR", "Python", "Autonomous Driving", "Simulation"],
+        "Research project implementing VR into Carla simulator for immersive autonomous driving system testing. First-of-its-kind integration enabling real-time VR interaction with simulated vehicles.",
+      tags: ["VR", "Python", "Autonomous Driving", "Research"],
       links: [
         { type: "video", url: "https://www.youtube.com/watch?v=Tmoptph4ix0", icon: <Video size={16} /> },
+        { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/VR-Carla-Integration", icon: <Github size={16} /> },
       ],
       image: "/placeholder-vr.jpg",
+      category: "research",
+    },
+    {
+      title: "Immersive VR Research Platform",
+      period: "Jan 2024 - Present",
+      description:
+        "Developing advanced VR research methodologies for human-computer interaction studies. Focus on spatial computing, haptic feedback, and cognitive load assessment in virtual environments.",
+      tags: ["VR", "Research", "HCI", "Spatial Computing"],
+      links: [
+        { type: "report", url: "https://cornell.box.com/s/vr-research-methodology", icon: <FileText size={16} /> },
+      ],
+      image: "/placeholder-vr-research.jpg",
+      category: "research",
     },
     {
       title: "AuthenTEZ - Blockchain NFC Authentication",
       period: "Mar 2024",
       description:
-        "A NFC-based blockchain access point to eliminate counterfeit products and medications. Built during a hackathon and won 2nd place.",
+        "NFC-based blockchain authentication system to eliminate counterfeit products. Won 2nd place in hackathon, demonstrating practical Web3 applications.",
       tags: ["Blockchain", "NFC", "Hardware", "Web3"],
       links: [
         { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/AuthenTEZ-Project-Demo", icon: <Github size={16} /> },
       ],
       image: "/placeholder-authentez.jpg",
+      category: "personal",
     },
     {
-      title: "Facial Recognition in Clouds",
+      title: "AI-Powered Personal Assistant",
+      period: "Jun 2024 - Aug 2024",
+      description:
+        "Built a custom AI assistant using fine-tuned language models for personal productivity. Features include natural language task management and intelligent scheduling.",
+      tags: ["AI", "NLP", "Productivity", "Personal"],
+      links: [
+        { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/Personal-AI-Assistant", icon: <Github size={16} /> },
+      ],
+      image: "/placeholder-ai-assistant.jpg",
+      category: "personal",
+    },
+    {
+      title: "Smart Home IoT Network",
+      period: "Jan 2023 - May 2023",
+      description:
+        "Designed and implemented a comprehensive smart home system with custom sensors, automated controls, and energy optimization algorithms.",
+      tags: ["IoT", "Smart Home", "Automation", "Energy"],
+      links: [
+        { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/SmartHome-IoT", icon: <Github size={16} /> },
+      ],
+      image: "/placeholder-smart-home.jpg",
+      category: "personal",
+    },
+    {
+      title: "Computer Vision Security System",
       period: "Sep 2022 - Apr 2023",
       description:
-        "Designed and built a facial recognition solution that is executed remotely, utilizing computer vision, SHA-256 encryption, server communication and internet protocol.",
+        "Cloud-based facial recognition system with SHA-256 encryption and real-time processing. Demonstrates practical applications of computer vision in security.",
       tags: ["Computer Vision", "Cloud Computing", "Security", "IoT"],
       links: [
         { type: "report", url: "https://cornell.box.com/s/m6wu3fb3qwln2jwe6jpsjbywx9ktld0k", icon: <FileText size={16} /> },
       ],
       image: "/placeholder-facial.jpg",
-    },
-    {
-      title: "Global 7500 Cabin Infotainment System",
-      period: "Jan 2021 - Apr 2022",
-      description:
-        "Full-stack development, rebuilt a previously dysfunctional system that involves phone application, Raspberry Pi server, and Arduino controller for Bombardier aircraft.",
-      tags: ["Full-Stack", "IoT", "Mobile", "Embedded Systems"],
-      links: [],
-      image: "/placeholder-bombardier.jpg",
-    },
-    {
-      title: "Open Sesame - Smart Door Lock",
-      period: "Jan 2021 - Apr 2021",
-      description:
-        "Designed and built a smart door lock that alleviates the pain point of the need to re-install the original lock, utilizing Arduino, C++ coding, mechanical design, and 3D printing.",
-      tags: ["IoT", "3D Printing", "Arduino", "Hardware"],
-      links: [
-        { type: "report", url: "https://cornell.box.com/s/a1fvisqj594x5av9kpbgjz1emkz61eqw", icon: <FileText size={16} /> },
-      ],
-      image: "/placeholder-opensesame.jpg",
+      category: "academic",
     },
   ];
+
+  const categories = [
+    { id: "all", label: "All Projects" },
+    { id: "startup", label: "Startups" },
+    { id: "research", label: "Research" },
+    { id: "personal", label: "Personal" },
+    { id: "academic", label: "Academic" },
+  ];
+
+  const filteredProjects = selectedCategory === "all" 
+    ? projects 
+    : projects.filter(project => project.category === selectedCategory);
 
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
@@ -96,13 +132,30 @@ export default function Projects() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Projects</h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 mb-8">
             Innovation through code, hardware, and AI
           </p>
+          
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  selectedCategory === category.id
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
@@ -110,10 +163,28 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="glass rounded-2xl overflow-hidden hover-lift group"
             >
-              {/* Project Image Placeholder */}
-              <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-white text-6xl font-bold opacity-20">
-                  {project.title.substring(0, 2)}
+              {/* Enhanced Project Image Display */}
+              <div className="h-48 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-500 to-blue-600 opacity-90"></div>
+                <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <div className="text-4xl font-bold mb-2 opacity-90">
+                      {project.title.substring(0, 2)}
+                    </div>
+                    <div className="text-sm opacity-75 capitalize">
+                      {project.category}
+                    </div>
+                  </div>
+                </div>
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="text-white text-center">
+                      <div className="text-lg font-semibold mb-1">View Project</div>
+                      <div className="text-sm opacity-90">Click to explore</div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
