@@ -9,6 +9,21 @@ export default function Experience() {
 
   const experiences = [
     {
+      company: "Hireal Inc.",
+      role: "Founder",
+      period: "Aug 2025 - Present",
+      description:
+        "Founded Hireal, an HR agent that helps startups and enterprises evaluate candidates using open internet information. Built the product from a hackathon prototype to a working solution in three weeks, onboarding three pilot customers. The platform generates evidence-linked 'Integrity Strip' scorecards powered by GitHub/LinkedIn signals, with Google login and Stripe payment integration. Revenue model includes $200 per user seat subscriptions and $3-$30 pay-per-use assessment fees, targeting 50 enterprise partnerships in the upcoming year.",
+      link: "https://hireal.pro",
+    },
+    {
+      company: "JobHatch Inc.",
+      role: "Founder",
+      period: "May 2025 - Aug 2025",
+      description:
+        "Founded JobHatch Inc. (Delaware C-Corp) to create the next-generation, AI-driven career platform for both job seekers and employers. Launched MVP in under 2 weeks, built 300+ organic waitlist users, and conducted 283 survey responses with 8 user interviews. Accepted into Beta University Cohort 9. Relocated from Ithaca to Palo Alto to be closer to customers and investors, living out of hotels for a month to focus on the business.",
+    },
+    {
       company: "Skyris Corp.",
       role: "CTO",
       period: "Jan 2025 - Jun 2025",
