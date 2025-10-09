@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
-import { GraduationCap, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
+import Image from "next/image";
 
 export default function Education() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -13,6 +14,7 @@ export default function Education() {
       degree: "Master of Science",
       field: "Systems Engineering and Data Science",
       period: "Aug 2023 - Dec 2024",
+      logo: "/cornell.png",
       highlight: "Completed in 1 year (half the typical time) with highest GPA while managing startups and research",
       achievements: [
         "Master's thesis on VR and LLM-backed autonomous driving",
@@ -25,6 +27,7 @@ export default function Education() {
       degree: "Bachelor of Arts",
       field: "Electrical Engineering",
       period: "Sep 2018 - May 2023",
+      logo: "/carleton.png",
       achievements: [
         "Multiple co-op positions at Bombardier Aerospace",
         "Published facial recognition research",
@@ -36,6 +39,7 @@ export default function Education() {
       degree: "High School Diploma",
       field: "Engineering Focus",
       period: "Sep 2014 - May 2018",
+      logo: "/luther.png",
       achievements: [
         "Early focus on engineering and technology",
         "Foundation for future technical pursuits",
@@ -69,8 +73,14 @@ export default function Education() {
             >
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                    <GraduationCap size={40} className="text-white" />
+                  <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center p-2 overflow-hidden">
+                    <Image
+                      src={edu.logo}
+                      alt={`${edu.school} logo`}
+                      width={80}
+                      height={80}
+                      className="object-contain"
+                    />
                   </div>
                 </div>
 

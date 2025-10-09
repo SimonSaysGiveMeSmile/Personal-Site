@@ -140,7 +140,7 @@ This project is open source and available for personal use.
 
 For questions or collaboration:
 - Email: jt886@cornell.edu
-- LinkedIn: [Simon Tian](https://www.linkedin.com/in/simon-ji%C4%81h%C3%A9-tian-1333a3156)
+- LinkedIn: [Simon Tian](https://linkedin.com/in/simon-tian-1333a3156/)
 - GitHub: [SimonSaysGiveMeSmile](https://github.com/SimonSaysGiveMeSmile)
 
 ---
