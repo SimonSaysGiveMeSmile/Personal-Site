@@ -184,8 +184,8 @@ export default function Hobbies() {
           className="mt-16 glass rounded-3xl p-8 text-center"
         >
           <p className="text-xl text-gray-700 italic">
-            "Music gives a soul to the universe, wings to the mind, flight to the imagination, 
-            and life to everything. Sports teach discipline, perseverance, and the joy of pushing limits."
+            &quot;Music gives a soul to the universe, wings to the mind, flight to the imagination, 
+            and life to everything. Sports teach discipline, perseverance, and the joy of pushing limits.&quot;
           </p>
         </motion.div>
       </div>
