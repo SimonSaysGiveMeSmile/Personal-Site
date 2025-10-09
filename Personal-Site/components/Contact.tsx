@@ -31,7 +31,7 @@ export default function Contact() {
     {
       icon: <Linkedin size={24} />,
       label: "LinkedIn",
-      url: "https://www.linkedin.com/in/simon-ji%C4%81h%C3%A9-tian-1333a3156",
+      url: "https://www.linkedin.com/in/simon-tian-1333a3156/",
       color: "from-blue-600 to-blue-700",
     },
     {
