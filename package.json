@@ -1,12 +1,4 @@
 {
-<<<<<<< HEAD
-  "dependencies": {
-    "@fontsource/inter": "^5.2.8",
-    "@fontsource/poppins": "^5.2.7",
-    "@next/font": "^14.2.15"
-  }
-}
-=======
   "name": "simon-tian-portfolio",
   "version": "1.0.0",
   "private": true,
@@ -17,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/poppins": "^5.2.7",
+    "@next/font": "^14.2.15",
     "next": "14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -35,5 +30,3 @@
     "eslint-config-next": "14.2.5"
   }
 }
-
->>>>>>> origin/main
