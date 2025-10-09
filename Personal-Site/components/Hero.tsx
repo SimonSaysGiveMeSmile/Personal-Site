@@ -121,7 +121,7 @@ export default function Hero({ scrollY }: HeroProps) {
               <Github size={24} />
             </a>
             <a
-              href="https://www.linkedin.com/in/simon-ji%C4%81h%C3%A9-tian-1333a3156"
+              href="https://www.linkedin.com/in/simon-tian-1333a3156/"
               target="_blank"
               rel="noopener noreferrer"
               className="glass rounded-full p-4 hover-lift hover:bg-white/50 transition-all"
