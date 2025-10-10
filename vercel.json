@@ -1,7 +1,9 @@
 {
-  "buildCommand": "cd Personal-Site && npm run build",
-  "devCommand": "cd Personal-Site && npm run dev",
-  "installCommand": "cd Personal-Site && npm install",
-  "outputDirectory": "Personal-Site/.next"
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "devCommand": "npm run dev",
+  "installCommand": "npm install",
+  "framework": "nextjs",
+  "rootDirectory": "Personal-Site"
 }
 
