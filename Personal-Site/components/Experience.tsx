@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import { ChevronDown, ExternalLink, Github, Award, Users, TrendingUp } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function Experience() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -205,7 +206,7 @@ export default function Experience() {
                     <div className="flex-shrink-0">
                       <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center text-gray-800 font-bold text-lg overflow-hidden border border-gray-200 shadow-sm">
                         {exp.logo ? (
-                          <img src={exp.logo} alt={exp.company} className="w-full h-full object-cover" />
+                          <Image src={exp.logo} alt={exp.company} width={56} height={56} className="w-full h-full object-cover" />
                         ) : (
                           exp.company.charAt(0)
                         )}
