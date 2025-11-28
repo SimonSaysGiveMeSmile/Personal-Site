@@ -110,7 +110,7 @@ export default function Accomplishments() {
   ];
 
   return (
-    <section id="accomplishments" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="accomplishments" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -119,7 +119,7 @@ export default function Accomplishments() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Accomplishments</h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Recognition, awards, and notable achievements
           </p>
         </motion.div>
@@ -134,21 +134,21 @@ export default function Accomplishments() {
               className="glass rounded-2xl p-8 hover-lift"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="text-blue-600">{section.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-800">{section.category}</h3>
+                <div className="text-accent">{section.icon}</div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{section.category}</h3>
               </div>
 
               <div className="space-y-6">
                 {section.items.map((item, itemIndex) => (
-                  <div key={itemIndex} className="border-l-4 border-blue-400 pl-4">
+                  <div key={itemIndex} className="border-l-4 border-[var(--accent)] pl-4">
                     <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-bold text-gray-800">{item.title}</h4>
+                      <h4 className="font-bold text-gray-800 dark:text-white">{item.title}</h4>
                       {item.date && (
-                        <span className="text-sm text-blue-600 font-medium">({item.date})</span>
+                        <span className="text-sm text-accent font-medium">({item.date})</span>
                       )}
                     </div>
                     {item.description && (
-                      <p className="text-gray-600 text-sm mb-2">{item.description}</p>
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">{item.description}</p>
                     )}
                     {item.links && item.links.length > 0 && (
                       <div className="flex gap-3 flex-wrap">
@@ -158,7 +158,7 @@ export default function Accomplishments() {
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors flex items-center gap-1"
+                            className="text-accent hover:text-white text-sm font-medium transition-colors flex items-center gap-1"
                           >
                             <FileText size={14} />
                             {link.label}
@@ -185,8 +185,8 @@ export default function Accomplishments() {
                 key={index}
                 className="glass rounded-2xl p-6 hover-lift"
               >
-                <h4 className="text-xl font-bold text-gray-800 mb-3">{fact.title}</h4>
-                <p className="text-gray-600 leading-relaxed">{fact.description}</p>
+                <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-3">{fact.title}</h4>
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{fact.description}</p>
               </div>
             ))}
           </div>

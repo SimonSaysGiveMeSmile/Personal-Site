@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
-import { GraduationCap, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
+import Image from "next/image";
 
 export default function Education() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -13,6 +14,7 @@ export default function Education() {
       degree: "Master of Science",
       field: "Systems Engineering and Data Science",
       period: "Aug 2023 - Dec 2024",
+      logo: "/cornell.png",
       highlight: "Completed in 1 year (half the typical time) with highest GPA while managing startups and research",
       achievements: [
         "Master's thesis on VR and LLM-backed autonomous driving",
@@ -25,6 +27,7 @@ export default function Education() {
       degree: "Bachelor of Arts",
       field: "Electrical Engineering",
       period: "Sep 2018 - May 2023",
+      logo: "/carleton.png",
       achievements: [
         "Multiple co-op positions at Bombardier Aerospace",
         "Published facial recognition research",
@@ -36,6 +39,7 @@ export default function Education() {
       degree: "High School Diploma",
       field: "Engineering Focus",
       period: "Sep 2014 - May 2018",
+      logo: "/luther.png",
       achievements: [
         "Early focus on engineering and technology",
         "Foundation for future technical pursuits",
@@ -44,7 +48,7 @@ export default function Education() {
   ];
 
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-white/30" ref={ref}>
+    <section id="education" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -53,7 +57,7 @@ export default function Education() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Education</h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-lg text-gray-600 dark:text-gray-300">
             Academic excellence and continuous learning
           </p>
         </motion.div>
@@ -69,27 +73,33 @@ export default function Education() {
             >
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
-                    <GraduationCap size={40} className="text-white" />
+                  <div className="w-20 h-20 rounded-2xl glass-dark flex items-center justify-center p-2 overflow-hidden">
+                    <Image
+                      src={edu.logo}
+                      alt={`${edu.school} logo`}
+                      width={80}
+                      height={80}
+                      className="object-contain"
+                    />
                   </div>
                 </div>
 
                 <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-2 text-blue-600">
+                  <div className="flex items-center gap-2 mb-2 text-accent">
                     <Calendar size={16} />
                     <span className="text-sm font-medium">{edu.period}</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-800 mb-1">{edu.school}</h3>
-                  <p className="text-lg font-semibold text-blue-600 mb-2">
+                  <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-1">{edu.school}</h3>
+                  <p className="text-lg font-semibold text-accent mb-2">
                     {edu.degree} - {edu.field}
                   </p>
                   {edu.highlight && (
-                    <p className="text-gray-700 font-medium mb-4 italic">{edu.highlight}</p>
+                    <p className="text-gray-700 dark:text-gray-200 font-medium mb-4 italic">{edu.highlight}</p>
                   )}
                   <ul className="space-y-2">
                     {edu.achievements.map((achievement, achIndex) => (
-                      <li key={achIndex} className="flex items-start gap-2 text-gray-600">
-                        <span className="text-blue-600 mt-1">•</span>
+                      <li key={achIndex} className="flex items-start gap-2 text-gray-600 dark:text-gray-300">
+                        <span className="text-accent mt-1">•</span>
                         <span>{achievement}</span>
                       </li>
                     ))}

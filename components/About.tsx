@@ -31,7 +31,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 relative" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -40,7 +40,7 @@ export default function About() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">About Me</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             I&apos;m a technical founder and AI engineer passionate about building intelligent systems
             that enhance human experiences. With a background spanning computer vision research,
             autonomous systems, and entrepreneurship, I bring ideas to life through cutting-edge technology.
@@ -54,11 +54,11 @@ export default function About() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass rounded-2xl p-6 hover-lift"
+              className="glass rounded-2xl p-6 hover-lift backdrop-saturate-150"
             >
-              <div className="text-blue-600 mb-4">{item.icon}</div>
-              <h3 className="text-xl font-bold mb-2 text-gray-800">{item.title}</h3>
-              <p className="text-gray-600">{item.description}</p>
+              <div className="text-accent mb-4">{item.icon}</div>
+              <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{item.title}</h3>
+              <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
             </motion.div>
           ))}
         </div>
@@ -69,8 +69,8 @@ export default function About() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-16 glass rounded-3xl p-8 md:p-12"
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Background</h3>
-          <div className="space-y-4 text-gray-600 leading-relaxed">
+          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">Background</h3>
+          <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
             <p>
               Currently serving as CEO with 79% equity in my latest venture, I&apos;m building at the intersection
               of AI and physical products. My journey includes founding SkyrisAI (YC top 10%), where I designed

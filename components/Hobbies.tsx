@@ -63,7 +63,7 @@ export default function Hobbies() {
   ];
 
   return (
-    <section id="hobbies" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-blue-50" ref={ref}>
+    <section id="hobbies" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -72,7 +72,7 @@ export default function Hobbies() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Hobbies & Interests</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Beyond coding and innovation, I find balance through music and sports. These passions fuel my creativity and keep me energized.
           </p>
         </motion.div>
@@ -85,8 +85,8 @@ export default function Hobbies() {
           className="mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-8">
-            <Music className="text-blue-600" size={32} />
-            <h3 className="text-3xl font-bold text-gray-800">Musical Pursuits</h3>
+            <Music className="text-accent" size={32} />
+            <h3 className="text-3xl font-bold text-gray-800 dark:text-white">Musical Pursuits</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -99,7 +99,7 @@ export default function Hobbies() {
                 className="glass rounded-2xl overflow-hidden hover-lift group"
               >
                 {/* Media Placeholder */}
-                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-blue-400 to-purple-600">
+                <div className="relative h-64 overflow-hidden bg-gradient-to-br from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)]">
                   <div className="absolute inset-0 flex items-center justify-center text-8xl opacity-40 group-hover:opacity-60 transition-opacity duration-300">
                     {hobby.icon}
                   </div>
@@ -117,10 +117,10 @@ export default function Hobbies() {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h4 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                  <h4 className="text-2xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-accent transition-colors">
                     {hobby.name}
                   </h4>
-                  <p className="text-gray-600">{hobby.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300">{hobby.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -134,8 +134,8 @@ export default function Hobbies() {
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <div className="flex items-center justify-center gap-3 mb-8">
-            <Dumbbell className="text-blue-600" size={32} />
-            <h3 className="text-3xl font-bold text-gray-800">Athletic Activities</h3>
+            <Dumbbell className="text-accent" size={32} />
+            <h3 className="text-3xl font-bold text-gray-800 dark:text-white">Athletic Activities</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -148,7 +148,7 @@ export default function Hobbies() {
                 className="glass rounded-2xl overflow-hidden hover-lift group"
               >
                 {/* Media Placeholder */}
-                <div className="relative h-56 overflow-hidden bg-gradient-to-br from-green-400 to-blue-600">
+                <div className="relative h-56 overflow-hidden bg-gradient-to-br from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)]">
                   <div className="absolute inset-0 flex items-center justify-center text-7xl opacity-40 group-hover:opacity-60 transition-opacity duration-300">
                     {hobby.icon}
                   </div>
@@ -166,10 +166,10 @@ export default function Hobbies() {
 
                 {/* Content */}
                 <div className="p-5">
-                  <h4 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
+                  <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-2 group-hover:text-accent transition-colors">
                     {hobby.name}
                   </h4>
-                  <p className="text-gray-600 text-sm">{hobby.description}</p>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">{hobby.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -183,7 +183,7 @@ export default function Hobbies() {
           transition={{ duration: 0.6, delay: 1.0 }}
           className="mt-16 glass rounded-3xl p-8 text-center"
         >
-          <p className="text-xl text-gray-700 italic">
+          <p className="text-xl text-gray-700 dark:text-gray-200 italic">
             &quot;Music gives a soul to the universe, wings to the mind, flight to the imagination, 
             and life to everything. Sports teach discipline, perseverance, and the joy of pushing limits.&quot;
           </p>

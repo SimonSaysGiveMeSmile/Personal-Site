@@ -3,8 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
+  --background: #f7f8fb;
   --foreground: #0a0a0a;
+  --bg-gradient: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.9), rgba(222, 229, 245, 0.3) 45%), radial-gradient(circle at 80% 0%, rgba(195, 210, 255, 0.35), transparent 45%), linear-gradient(135deg, #fefefe 0%, #e5ebf2 45%, #f5f6fb 100%);
+  --grid-color: rgba(15, 23, 42, 0.08);
+  --text-primary: #0f172a;
+  --text-muted: rgba(15, 23, 42, 0.65);
+  --surface: rgba(255, 255, 255, 0.85);
+  --surface-alt: rgba(255, 255, 255, 0.65);
+  --edge: rgba(15, 23, 42, 0.12);
+  --edge-strong: rgba(15, 23, 42, 0.2);
+  --shadow: rgba(15, 23, 42, 0.18);
+  --accent: #caa763;
+  --accent-secondary: #8aa4ff;
+  --accent-tertiary: #7de5ff;
+}
+
+body.dark {
+  --background: #05070e;
+  --foreground: #f8fbff;
+  --bg-gradient: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08), transparent 45%), radial-gradient(circle at 80% 0%, rgba(97, 112, 255, 0.22), transparent 55%), linear-gradient(135deg, #05070e 0%, #050608 45%, #010203 100%);
+  --grid-color: rgba(255, 255, 255, 0.04);
+  --text-primary: rgba(245, 247, 255, 0.95);
+  --text-muted: rgba(215, 224, 255, 0.78);
+  --surface: rgba(13, 16, 27, 0.86);
+  --surface-alt: rgba(18, 20, 32, 0.85);
+  --edge: rgba(255, 255, 255, 0.08);
+  --edge-strong: rgba(255, 255, 255, 0.15);
+  --shadow: rgba(0, 0, 0, 0.65);
+  --accent: #f2c777;
+  --accent-secondary: #b7c3ff;
+  --accent-tertiary: #6dd5ed;
 }
 
 * {
@@ -18,9 +47,56 @@ html {
 }
 
 body {
-  color: var(--foreground);
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text-primary);
+  background-image: var(--bg-gradient);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  transition: background 0.6s ease, color 0.3s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(0deg, transparent 24%, var(--grid-color) 25%, var(--grid-color) 26%, transparent 27%), linear-gradient(90deg, transparent 24%, var(--grid-color) 25%, var(--grid-color) 26%, transparent 27%);
+  background-size: 140px 140px;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -1;
+}
+
+section {
+  color: inherit;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-accent {
+  color: var(--accent);
+}
+
+.chip {
+  border: 1px solid var(--edge);
+  border-radius: 9999px;
+  padding: 0.45rem 1.1rem;
+  background: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark .chip {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* Custom scrollbar */
@@ -29,36 +105,50 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #3b82f6, #2563eb);
+  background: linear-gradient(180deg, var(--accent), var(--accent-secondary));
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #2563eb, #1d4ed8);
+  background: linear-gradient(180deg, var(--accent-secondary), var(--accent-tertiary));
 }
 
 /* Glass effect utility */
 .glass {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--surface);
+  border: 1px solid var(--edge-strong);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 25px 50px -24px var(--shadow);
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  mix-blend-mode: screen;
 }
 
 .glass-dark {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--surface-alt);
+  border: 1px solid var(--edge);
+  box-shadow: 0 35px 65px -35px var(--shadow);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
 }
 
 /* Gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+  background: linear-gradient(120deg, var(--accent), var(--accent-secondary), var(--accent-tertiary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -78,7 +168,7 @@ body {
 }
 
 .animated-gradient {
-  background: linear-gradient(270deg, #3b82f6, #2563eb, #1d4ed8, #60a5fa);
+  background: linear-gradient(270deg, var(--accent), var(--accent-secondary), var(--accent-tertiary), #ffffff);
   background-size: 400% 400%;
   animation: gradient-shift 8s ease infinite;
 }
@@ -89,7 +179,42 @@ body {
 }
 
 .hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 35px 65px -35px var(--shadow);
+}
+
+/* Dark overrides for existing text utilities */
+body.dark .text-gray-600,
+body.dark .text-gray-500 {
+  color: rgba(223, 229, 255, 0.78) !important;
+}
+
+body.dark .text-gray-700,
+body.dark .text-gray-800,
+body.dark .text-gray-900 {
+  color: rgba(248, 249, 255, 0.95) !important;
+}
+
+body:not(.dark) .text-gray-500,
+body:not(.dark) .text-gray-600,
+body:not(.dark) .text-gray-700,
+body:not(.dark) .text-gray-800,
+body:not(.dark) .text-gray-900 {
+  color: #080a12 !important;
+}
+
+body:not(.dark) .text-gray-300,
+body:not(.dark) .text-gray-400 {
+  color: rgba(8, 10, 18, 0.8) !important;
+}
+
+body.dark .bg-white,
+body.dark .bg-white\/30,
+body.dark .bg-white\/40,
+body.dark .bg-white\/50,
+body.dark .bg-white\/60,
+body.dark .bg-white\/70,
+body.dark .bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.08) !important;
 }
 

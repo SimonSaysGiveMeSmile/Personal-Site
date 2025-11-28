@@ -123,7 +123,7 @@ export default function Projects() {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -132,7 +132,7 @@ export default function Projects() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Projects</h2>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
             Innovation through code, hardware, and AI
           </p>
           
@@ -142,10 +142,10 @@ export default function Projects() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`chip text-sm font-medium ${
                   selectedCategory === category.id
-                    ? "bg-blue-600 text-white shadow-lg"
-                    : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    ? "bg-gradient-to-r from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] text-white shadow-lg border-transparent"
+                    : "text-gray-700 dark:text-gray-200 hover:bg-white/60 dark:hover:bg-white/5"
                 }`}
               >
                 {category.label}
@@ -165,8 +165,8 @@ export default function Projects() {
             >
               {/* Enhanced Project Image Display */}
               <div className="h-48 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400 via-purple-500 to-blue-600 opacity-90"></div>
-                <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] opacity-90"></div>
+                <div className="absolute inset-0 bg-black bg-opacity-30"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-white">
                     <div className="text-4xl font-bold mb-2 opacity-90">
@@ -178,7 +178,7 @@ export default function Projects() {
                   </div>
                 </div>
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-white bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="text-white text-center">
                       <div className="text-lg font-semibold mb-1">View Project</div>
@@ -189,17 +189,17 @@ export default function Projects() {
               </div>
 
               <div className="p-6">
-                <div className="text-sm text-blue-600 font-medium mb-2">{project.period}</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
+                <div className="text-sm text-accent font-medium mb-2">{project.period}</div>
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-accent transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{project.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium"
+                      className="px-3 py-1 rounded-full text-xs font-medium bg-white/70 text-gray-700 dark:bg-white/10 dark:text-gray-200 border border-white/20"
                     >
                       {tag}
                     </span>
@@ -214,7 +214,7 @@ export default function Projects() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-blue-600 hover:text-blue-700 font-medium transition-colors text-sm"
+                      className="flex items-center gap-1 text-accent hover:text-white font-medium transition-colors text-sm"
                       >
                         {link.icon}
                         <span className="capitalize">{link.type}</span>
