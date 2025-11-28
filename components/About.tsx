@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import { Brain, Rocket, Code, Award } from "lucide-react";
+import InteractiveCard from "@/components/InteractiveCard";
 
 export default function About() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -31,7 +32,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8 relative" ref={ref}>
+    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -39,38 +40,37 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">About Me</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            I&apos;m a technical founder and AI engineer passionate about building intelligent systems
-            that enhance human experiences. With a background spanning computer vision research,
-            autonomous systems, and entrepreneurship, I bring ideas to life through cutting-edge technology.
+          <p className="lux-pill mx-auto mb-6">About Me</p>
+          <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-6">Precision-built intelligence</h2>
+          <p className="text-lg text-[var(--text-muted)] max-w-3xl mx-auto">
+            A technical founder crafting AI systems that feel tangible—combining emotional intelligence, robotics, and full-stack execution with the clarity of modern industrial design.
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((item, index) => (
-            <motion.div
+            <InteractiveCard
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass rounded-2xl p-6 hover-lift backdrop-saturate-150"
+              className="p-6"
             >
-              <div className="text-accent mb-4">{item.icon}</div>
-              <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{item.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{item.description}</p>
-            </motion.div>
+              <div className="text-[var(--text-primary)] mb-4">{item.icon}</div>
+              <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-2">{item.title}</h3>
+              <p className="text-[var(--text-muted)]">{item.description}</p>
+            </InteractiveCard>
           ))}
         </div>
 
-        <motion.div
+        <InteractiveCard
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 glass rounded-3xl p-8 md:p-12"
+          className="mt-16 p-10 md:p-14 text-left"
         >
-          <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-800 dark:text-white">Background</h3>
-          <div className="space-y-4 text-gray-600 dark:text-gray-300 leading-relaxed">
+          <h3 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-6">Background</h3>
+          <div className="space-y-4 text-[var(--text-muted)] leading-relaxed">
             <p>
               Currently serving as CEO with 79% equity in my latest venture, I&apos;m building at the intersection
               of AI and physical products. My journey includes founding SkyrisAI (YC top 10%), where I designed
@@ -89,7 +89,7 @@ export default function About() {
               for the first time.
             </p>
           </div>
-        </motion.div>
+        </InteractiveCard>
       </div>
     </section>
   );

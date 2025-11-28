@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import { ExternalLink, Github, FileText, Video } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
+import InteractiveCard from "@/components/InteractiveCard";
 
 export default function Projects() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -19,7 +21,8 @@ export default function Projects() {
       links: [
         { type: "website", url: "https://skyrisai.com/", icon: <ExternalLink size={16} /> },
       ],
-      image: "/placeholder-skyris.jpg",
+      image: "/Skyris-1.jpeg",
+      imageAlt: "Skyris founder outside Laurent Beaudoin centre",
       category: "startup",
     },
     {
@@ -32,7 +35,8 @@ export default function Projects() {
         { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/FreeRange", icon: <Github size={16} /> },
         { type: "demo", url: "https://cornell.box.com/s/czzblhzs7kq8mblfdvei9tt6ip4z7xkz", icon: <FileText size={16} /> },
       ],
-      image: "/placeholder-freerange.jpg",
+      image: "/FreeRange-1.jpeg",
+      imageAlt: "FreeRange drone prototype inside lab",
       category: "startup",
     },
     {
@@ -45,7 +49,6 @@ export default function Projects() {
         { type: "video", url: "https://www.youtube.com/watch?v=Tmoptph4ix0", icon: <Video size={16} /> },
         { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/VR-Carla-Integration", icon: <Github size={16} /> },
       ],
-      image: "/placeholder-vr.jpg",
       category: "research",
     },
     {
@@ -57,7 +60,6 @@ export default function Projects() {
       links: [
         { type: "report", url: "https://cornell.box.com/s/vr-research-methodology", icon: <FileText size={16} /> },
       ],
-      image: "/placeholder-vr-research.jpg",
       category: "research",
     },
     {
@@ -69,7 +71,6 @@ export default function Projects() {
       links: [
         { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/AuthenTEZ-Project-Demo", icon: <Github size={16} /> },
       ],
-      image: "/placeholder-authentez.jpg",
       category: "personal",
     },
     {
@@ -81,7 +82,6 @@ export default function Projects() {
       links: [
         { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/Personal-AI-Assistant", icon: <Github size={16} /> },
       ],
-      image: "/placeholder-ai-assistant.jpg",
       category: "personal",
     },
     {
@@ -93,7 +93,6 @@ export default function Projects() {
       links: [
         { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/SmartHome-IoT", icon: <Github size={16} /> },
       ],
-      image: "/placeholder-smart-home.jpg",
       category: "personal",
     },
     {
@@ -105,7 +104,6 @@ export default function Projects() {
       links: [
         { type: "report", url: "https://cornell.box.com/s/m6wu3fb3qwln2jwe6jpsjbywx9ktld0k", icon: <FileText size={16} /> },
       ],
-      image: "/placeholder-facial.jpg",
       category: "academic",
     },
   ];
@@ -131,9 +129,12 @@ export default function Projects() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Projects</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
+          <p className="lux-pill mx-auto mb-6">Projects</p>
+          <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">
             Innovation through code, hardware, and AI
+          </h2>
+          <p className="text-lg text-[var(--text-muted)] mb-8">
+            Luxury-grade experiences powered by research-level engineering
           </p>
           
           {/* Category Filter */}
@@ -142,10 +143,10 @@ export default function Projects() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`chip text-sm font-medium ${
+                className={`px-4 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 ${
                   selectedCategory === category.id
-                    ? "bg-gradient-to-r from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] text-white shadow-lg border-transparent"
-                    : "text-gray-700 dark:text-gray-200 hover:bg-white/60 dark:hover:bg-white/5"
+                    ? "bg-gradient-to-r from-white via-[#f5d08a] to-[#aeb8ff] text-[#0f0f10] shadow-lg"
+                    : "border border-white/20 text-[var(--text-muted)]"
                 }`}
               >
                 {category.label}
@@ -156,17 +157,30 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
-            <motion.div
+            <InteractiveCard
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass rounded-2xl overflow-hidden hover-lift group"
+              className="overflow-hidden group"
             >
               {/* Enhanced Project Image Display */}
               <div className="h-48 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] opacity-90"></div>
-                <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+                {project.image && (
+                  <Image
+                    src={project.image}
+                    alt={project.imageAlt || project.title}
+                    fill
+                    sizes="(min-width: 1024px) 320px, (min-width: 768px) 45vw, 90vw"
+                    className="object-cover"
+                    priority={index < 2}
+                  />
+                )}
+                {!project.image && (
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-[#f5d08a]/50 to-[#d7dae4]/45 opacity-90"></div>
+                )}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/40"></div>
+                <div className="absolute inset-0 bg-black/30"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-white">
                     <div className="text-4xl font-bold mb-2 opacity-90">
@@ -178,7 +192,7 @@ export default function Projects() {
                   </div>
                 </div>
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-white bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="text-white text-center">
                       <div className="text-lg font-semibold mb-1">View Project</div>
@@ -189,17 +203,17 @@ export default function Projects() {
               </div>
 
               <div className="p-6">
-                <div className="text-sm text-accent font-medium mb-2">{project.period}</div>
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 group-hover:text-accent transition-colors">
+                <div className="text-sm font-medium mb-2 text-[var(--text-muted)]">{project.period}</div>
+                <h3 className="text-xl font-semibold text-[var(--text-primary)] mb-3">
                   {project.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">{project.description}</p>
+                <p className="text-[var(--text-muted)] mb-4 leading-relaxed">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.tags.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="px-3 py-1 rounded-full text-xs font-medium bg-white/70 text-gray-700 dark:bg-white/10 dark:text-gray-200 border border-white/20"
+                      className="lux-chip text-xs"
                     >
                       {tag}
                     </span>
@@ -214,7 +228,7 @@ export default function Projects() {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                      className="flex items-center gap-1 text-accent hover:text-white font-medium transition-colors text-sm"
+                        className="flex items-center gap-1 text-sm font-semibold text-[var(--text-primary)] hover:text-white"
                       >
                         {link.icon}
                         <span className="capitalize">{link.type}</span>
@@ -223,7 +237,7 @@ export default function Projects() {
                   </div>
                 )}
               </div>
-            </motion.div>
+            </InteractiveCard>
           ))}
         </div>
       </div>

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
 import { Trophy, Award, BookOpen, Lightbulb, FileText } from "lucide-react";
+import InteractiveCard from "@/components/InteractiveCard";
 
 export default function Accomplishments() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -118,37 +119,38 @@ export default function Accomplishments() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Accomplishments</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="lux-pill mx-auto mb-6">Accomplishments</p>
+          <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">Accomplishments</h2>
+          <p className="text-lg text-[var(--text-muted)]">
             Recognition, awards, and notable achievements
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {accomplishments.map((section, index) => (
-            <motion.div
+            <InteractiveCard
               key={index}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass rounded-2xl p-8 hover-lift"
+              className="p-8"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="text-accent">{section.icon}</div>
-                <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{section.category}</h3>
+                <div className="text-[var(--text-primary)]">{section.icon}</div>
+                <h3 className="text-2xl font-semibold text-[var(--text-primary)]">{section.category}</h3>
               </div>
 
               <div className="space-y-6">
                 {section.items.map((item, itemIndex) => (
-                  <div key={itemIndex} className="border-l-4 border-[var(--accent)] pl-4">
+                  <div key={itemIndex} className="border-l-4 border-white/20 pl-4">
                     <div className="flex items-center gap-2 mb-1">
-                      <h4 className="font-bold text-gray-800 dark:text-white">{item.title}</h4>
+                      <h4 className="font-semibold text-[var(--text-primary)]">{item.title}</h4>
                       {item.date && (
-                        <span className="text-sm text-accent font-medium">({item.date})</span>
+                        <span className="text-sm text-[var(--text-muted)] font-medium">({item.date})</span>
                       )}
                     </div>
                     {item.description && (
-                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-2">{item.description}</p>
+                      <p className="text-[var(--text-muted)] text-sm mb-2">{item.description}</p>
                     )}
                     {item.links && item.links.length > 0 && (
                       <div className="flex gap-3 flex-wrap">
@@ -158,7 +160,7 @@ export default function Accomplishments() {
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-accent hover:text-white text-sm font-medium transition-colors flex items-center gap-1"
+                            className="text-sm font-medium flex items-center gap-1 text-[var(--text-primary)]"
                           >
                             <FileText size={14} />
                             {link.label}
@@ -169,7 +171,7 @@ export default function Accomplishments() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </InteractiveCard>
           ))}
         </div>
 
@@ -178,16 +180,16 @@ export default function Accomplishments() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-3xl font-bold mb-8 text-center gradient-text">Notable Stories</h3>
+          <h3 className="text-3xl font-semibold mb-8 text-center text-[var(--text-primary)]">Notable Stories</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {funFacts.map((fact, index) => (
-              <div
+              <InteractiveCard
                 key={index}
-                className="glass rounded-2xl p-6 hover-lift"
+                className="p-6"
               >
-                <h4 className="text-xl font-bold text-gray-800 dark:text-white mb-3">{fact.title}</h4>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{fact.description}</p>
-              </div>
+                <h4 className="text-xl font-semibold text-[var(--text-primary)] mb-3">{fact.title}</h4>
+                <p className="text-[var(--text-muted)] leading-relaxed">{fact.description}</p>
+              </InteractiveCard>
             ))}
           </div>
         </motion.div>

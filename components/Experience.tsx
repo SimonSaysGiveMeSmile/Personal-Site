@@ -2,9 +2,10 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
-import { ChevronDown, ExternalLink, Github, Award, Users, TrendingUp } from "lucide-react";
+import { ChevronDown, ExternalLink, Github, Award } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import InteractiveCard from "@/components/InteractiveCard";
 
 export default function Experience() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
@@ -25,7 +26,10 @@ export default function Experience() {
         "3 pilot customers onboarded",
         "Targeting 50 enterprise partnerships"
       ],
-      images: 4,
+      images: 1,
+      gallery: [
+        { src: "/Hireal-1.jpeg", alt: "Hireal founder visit at MiraclePlus" },
+      ],
     },
     {
       company: "JobHatch Inc.",
@@ -41,7 +45,14 @@ export default function Experience() {
         "283 survey responses",
         "Beta University Cohort 9"
       ],
-      images: 4,
+      images: 5,
+      gallery: [
+        { src: "/JobHatch-1.jpeg", alt: "JobHatch founder demoing at a booth" },
+        { src: "/JobHatch-2.jpeg", alt: "JobHatch brochure close-up" },
+        { src: "/JobHatch-3.JPG", alt: "JobHatch presentation banner" },
+        { src: "/JobHatch-4.JPG", alt: "JobHatch networking conversation" },
+        { src: "/JobHatch-5.jpeg", alt: "JobHatch exhibit hall session" },
+      ],
     },
     {
       company: "Skyris Corp.",
@@ -57,7 +68,13 @@ export default function Experience() {
         "Multimodal emotion recognition",
         "Real-time affective computing"
       ],
-      images: 3,
+      images: 4,
+      gallery: [
+        { src: "/Skyris-1.jpeg", alt: "Skyris outside Bombardier campus" },
+        { src: "/Skyris-2.png", alt: "Skyris badge and workspace" },
+        { src: "/Skyris-3.jpeg", alt: "Skyris prototype indoors" },
+        { src: "/Skyris-4.jpeg", alt: "Skyris product demonstration" },
+      ],
     },
     {
       company: "FreeRange Drones",
@@ -73,7 +90,12 @@ export default function Experience() {
         "24/7 autonomous operation",
         "Battery-swapping stations"
       ],
-      images: 4,
+      images: 3,
+      gallery: [
+        { src: "/FreeRange-1.jpeg", alt: "FreeRange drone prototype" },
+        { src: "/FreeRange-2.jpeg", alt: "FreeRange drone testing lab" },
+        { src: "/FreeRange-3.jpeg", alt: "FreeRange auto-charging concept" },
+      ],
     },
     {
       company: "ByteDance",
@@ -122,6 +144,11 @@ export default function Experience() {
         "Embedded systems integration"
       ],
       images: 3,
+      gallery: [
+        { src: "/BA-Cabin-1.jpeg", alt: "Bombardier aircraft cabin walkthrough" },
+        { src: "/BA-Cabin-2.jpeg", alt: "Bombardier conference event" },
+        { src: "/BA-Cabin-3.jpeg", alt: "Bombardier cabin systems showcase" },
+      ],
     },
     {
       company: "engineering.com",
@@ -154,6 +181,11 @@ export default function Experience() {
         "Regulatory certification"
       ],
       images: 3,
+      gallery: [
+        { src: "/BA-Avionics-1.jpeg", alt: "Bombardier avionics department tour" },
+        { src: "/BA-Avionics-2.jpeg", alt: "Bombardier ID badge" },
+        { src: "/BA-Avoinics-3.jpeg", alt: "Bombardier Laurent Beaudoin center" },
+      ],
     },
   ];
 
@@ -170,15 +202,22 @@ export default function Experience() {
           transition={{ duration: 0.6 }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 gradient-text">Work Experience</h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
+          <p className="lux-pill mx-auto mb-6">Experience</p>
+          <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">
+            Work experience
+          </h2>
+          <p className="text-lg text-[var(--text-muted)]">
             A journey through AI, aerospace, and entrepreneurship
           </p>
         </motion.div>
 
         <div className="relative">
           {/* Timeline vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] hidden md:block opacity-80" />
+          <div className="absolute left-7 top-0 bottom-0 hidden md:block pointer-events-none">
+            <div className="relative h-full w-[2px] rounded-full bg-gradient-to-b from-white/70 via-white/55 to-white/15">
+              <div className="absolute inset-x-[-5px] top-0 bottom-0 bg-gradient-to-b from-[#f9f0dd]/40 via-transparent to-[#d7cec0]/30 blur-md" />
+            </div>
+          </div>
           
           <div className="space-y-6">
             {experiences.map((exp, index) => (
@@ -190,13 +229,15 @@ export default function Experience() {
                 className="relative"
               >
                 {/* Timeline dot */}
-                <motion.div
-                  className="absolute left-3.5 top-8 w-5 h-5 rounded-full bg-gradient-to-br from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] border-4 border-white/40 shadow-lg hidden md:block z-10"
+                <motion.div 
+                  className="absolute left-[17px] top-8 hidden h-6 w-6 items-center justify-center rounded-full bg-white/10 shadow-[0_8px_18px_rgba(9,9,11,0.25)] backdrop-blur-sm md:flex"
                   whileHover={{ scale: 1.3 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                />
+                >
+                  <span className="inline-block h-3 w-3 rounded-full bg-gradient-to-br from-[#f6d399] via-[#f7f1e4] to-[#d9dde8] shadow-[0_0_12px_rgba(255,255,255,0.65)]" />
+                </motion.div>
                 
-                <div className="md:ml-16 glass rounded-2xl overflow-hidden hover-lift">
+                <InteractiveCard className="md:ml-16 overflow-hidden">
                   {/* Compact Top Level */}
                   <div
                     className="flex items-center gap-5 p-5 cursor-pointer"
@@ -204,9 +245,9 @@ export default function Experience() {
                   >
                     {/* Company Logo/Profile */}
                     <div className="flex-shrink-0">
-                      <div className="w-14 h-14 rounded-xl glass-dark flex items-center justify-center text-gray-800 dark:text-white font-bold text-lg overflow-hidden">
+                      <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-[var(--text-primary)] font-bold text-lg overflow-hidden border border-white/20 shadow-inner">
                         {exp.logo ? (
-                          <Image src={exp.logo} alt={exp.company} width={56} height={56} className="w-full h-full object-cover rounded-xl" />
+                          <Image src={exp.logo} alt={exp.company} width={56} height={56} className="w-full h-full object-cover" />
                         ) : (
                           exp.company.charAt(0)
                         )}
@@ -215,15 +256,15 @@ export default function Experience() {
 
                     {/* Company & Role Info */}
                     <div className="flex-1 min-w-0">
-                      <h3 className="text-xl font-bold text-gray-800 dark:text-white truncate">{exp.company}</h3>
-                      <p className="text-sm text-gray-600 dark:text-gray-300 truncate mt-1">{exp.role}</p>
+                      <h3 className="text-xl font-semibold text-[var(--text-primary)] truncate">{exp.company}</h3>
+                      <p className="text-sm text-[var(--text-muted)] truncate mt-1">{exp.role}</p>
                     </div>
 
                     {/* Period & Toggle */}
                     <div className="flex items-center gap-4 flex-shrink-0">
-                      <span className="text-sm text-gray-500 dark:text-gray-300 hidden sm:block font-medium">{exp.period}</span>
+                      <span className="text-sm text-[var(--text-muted)] hidden sm:block font-medium">{exp.period}</span>
                       <button
-                        className="p-2 hover:bg-white/40 dark:hover:bg-white/5 rounded-full transition-colors"
+                        className="p-2 rounded-full transition-colors text-[var(--text-muted)] hover:text-[var(--text-primary)]"
                         onClick={(e) => {
                           e.stopPropagation();
                           toggleExpand(index);
@@ -233,7 +274,7 @@ export default function Experience() {
                           animate={{ rotate: expandedIndex === index ? 180 : 0 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <ChevronDown size={20} className="text-gray-600 dark:text-gray-200" />
+                          <ChevronDown size={20} />
                         </motion.div>
                       </button>
                     </div>
@@ -249,17 +290,17 @@ export default function Experience() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-6 pt-2 border-t border-white/10">
+                        <div className="px-5 pb-6 pt-2 border-t border-white/15">
                           {/* Mobile Period */}
-                          <p className="text-sm text-gray-500 dark:text-gray-300 mb-4 sm:hidden font-medium">{exp.period}</p>
+                          <p className="text-sm text-[var(--text-muted)] mb-4 sm:hidden font-medium">{exp.period}</p>
 
                           {/* Description */}
-                          <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-5">{exp.description}</p>
+                          <p className="text-[var(--text-muted)] leading-relaxed mb-5">{exp.description}</p>
 
                           {/* Key Highlights */}
                           <div className="mb-5">
-                            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3 flex items-center gap-2">
-                              <Award size={16} className="text-accent" />
+                            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3 flex items-center gap-2">
+                              <Award size={16} />
                               Key Highlights
                             </h4>
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -269,9 +310,9 @@ export default function Experience() {
                                   initial={{ opacity: 0, y: 10 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ delay: i * 0.1 }}
-                                  className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-200 bg-white/70 dark:bg-white/5 rounded-lg px-3 py-2 border border-white/10"
+                                  className="flex items-center gap-2 text-sm text-[var(--text-muted)] rounded-2xl px-3 py-2 border border-white/10"
                                 >
-                                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] flex-shrink-0" />
+                                  <div className="w-1.5 h-1.5 rounded-full bg-white/70 flex-shrink-0" />
                                   <span>{highlight}</span>
                                 </motion.div>
                               ))}
@@ -280,25 +321,50 @@ export default function Experience() {
 
                           {/* Photo Wall */}
                           <div className="mb-5">
-                            <h4 className="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-3">Gallery</h4>
+                            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Gallery</h4>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                              {Array.from({ length: exp.images }).map((_, i) => (
-                                <motion.div
-                                  key={i}
-                                  initial={{ opacity: 0, scale: 0.8 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  transition={{ delay: i * 0.1 }}
-                                  whileHover={{ scale: 1.05, rotate: 1 }}
-                                  className="aspect-square rounded-xl overflow-hidden border border-white/10 cursor-pointer group bg-gradient-to-br from-white/60 via-[var(--accent-secondary)]/30 to-transparent dark:from-white/5 dark:via-white/10"
-                                >
-                                  <div className="w-full h-full flex items-center justify-center text-gray-500 dark:text-gray-300 group-hover:text-accent transition-colors">
-                                    <div className="text-center">
-                                      <div className="text-3xl mb-1">📷</div>
-                                      <div className="text-xs font-medium">Image {i + 1}</div>
-                                    </div>
-                                  </div>
-                                </motion.div>
-                              ))}
+                              {exp.gallery && exp.gallery.length > 0
+                                ? exp.gallery.map((image, i) => (
+                                    <motion.div
+                                      key={image.src}
+                                      initial={{ opacity: 0, scale: 0.8 }}
+                                      animate={{ opacity: 1, scale: 1 }}
+                                      transition={{ delay: i * 0.1 }}
+                                      whileHover={{ scale: 1.05, rotate: 1 }}
+                                      className="aspect-square rounded-2xl overflow-hidden border border-white/15 bg-gradient-to-br from-white/10 to-white/5 shadow-inner cursor-pointer group"
+                                    >
+                                      <div className="relative w-full h-full">
+                                        <Image
+                                          src={image.src}
+                                          alt={image.alt}
+                                          fill
+                                          sizes="(min-width: 1024px) 200px, (min-width: 768px) 33vw, 50vw"
+                                          className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
+                                        <div className="absolute bottom-2 left-2 text-[10px] font-medium text-white bg-black/50 backdrop-blur px-2 py-1 rounded-full">
+                                          {image.alt}
+                                        </div>
+                                      </div>
+                                    </motion.div>
+                                  ))
+                                : Array.from({ length: exp.images }).map((_, i) => (
+                                    <motion.div
+                                      key={i}
+                                      initial={{ opacity: 0, scale: 0.8 }}
+                                      animate={{ opacity: 1, scale: 1 }}
+                                      transition={{ delay: i * 0.1 }}
+                                      whileHover={{ scale: 1.05, rotate: 1 }}
+                                      className="aspect-square rounded-2xl overflow-hidden border border-white/15 bg-gradient-to-br from-white/10 to-white/5 shadow-inner cursor-pointer group"
+                                    >
+                                      <div className="w-full h-full flex items-center justify-center text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">
+                                        <div className="text-center">
+                                          <div className="text-3xl mb-1">📷</div>
+                                          <div className="text-xs font-medium">Image {i + 1}</div>
+                                        </div>
+                                      </div>
+                                    </motion.div>
+                                  ))}
                             </div>
                           </div>
 
@@ -309,7 +375,7 @@ export default function Experience() {
                                 href={exp.website}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white bg-gradient-to-r from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] hover:opacity-90 transition-all text-sm font-medium shadow-lg"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-white/80 to-[#f5d08a] text-[#0f0f10] text-sm font-semibold shadow-lg"
                                 onClick={(e) => e.stopPropagation()}
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
@@ -323,7 +389,7 @@ export default function Experience() {
                                 href={exp.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 glass-dark text-white rounded-lg hover:bg-white/10 transition-colors text-sm font-medium shadow-sm border border-white/10"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 text-[var(--text-primary)] text-sm font-semibold"
                                 onClick={(e) => e.stopPropagation()}
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
@@ -337,7 +403,7 @@ export default function Experience() {
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </InteractiveCard>
               </motion.div>
             ))}
           </div>

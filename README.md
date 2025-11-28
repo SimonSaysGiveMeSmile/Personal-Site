@@ -90,7 +90,7 @@ Update the image references in the components accordingly.
 
 ### Color Theme
 
-The site uses a blue gradient theme. To customize colors, edit:
+The site uses a white/silver/gold metallic gradient palette. To customize colors, edit:
 - `tailwind.config.ts` for Tailwind color palette
 - `app/globals.css` for custom CSS variables and gradient definitions
 

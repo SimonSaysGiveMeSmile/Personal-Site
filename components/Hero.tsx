@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowDown, Github, Linkedin, Twitter } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -12,13 +13,12 @@ export default function Hero({ scrollY }: HeroProps) {
 
   return (
     <section
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24 text-center"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-32"
       id="hero"
     >
-      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
-          className="absolute top-20 left-10 w-72 h-72 rounded-full mix-blend-screen blur-3xl opacity-40 animate-float bg-gradient-to-br from-[var(--accent)] via-[var(--accent-tertiary)] to-transparent"
+          className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-30"
           animate={{
             x: [0, 100, 0],
             y: [0, 50, 0],
@@ -30,7 +30,7 @@ export default function Hero({ scrollY }: HeroProps) {
           }}
         />
         <motion.div
-          className="absolute top-40 right-10 w-72 h-72 rounded-full mix-blend-screen blur-3xl opacity-40 animate-float bg-gradient-to-br from-[var(--accent-secondary)] via-white/40 to-transparent"
+          className="absolute top-40 right-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-30"
           animate={{
             x: [0, -100, 0],
             y: [0, 100, 0],
@@ -42,7 +42,7 @@ export default function Hero({ scrollY }: HeroProps) {
           }}
         />
         <motion.div
-          className="absolute -bottom-32 left-1/2 w-72 h-72 rounded-full mix-blend-screen blur-3xl opacity-30 animate-float bg-gradient-to-br from-white/40 via-[var(--accent)] to-transparent"
+          className="absolute -bottom-32 left-1/2 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-30"
           animate={{
             x: [0, 50, 0],
             y: [0, -50, 0],
@@ -72,8 +72,15 @@ export default function Hero({ scrollY }: HeroProps) {
             className="mb-8"
           >
             <div className="w-32 h-32 mx-auto rounded-full glass-dark p-1 hover:scale-110 transition-transform duration-300">
-              <div className="w-full h-full rounded-full bg-gradient-to-br from-[var(--accent)] via-[var(--accent-secondary)] to-[var(--accent-tertiary)] flex items-center justify-center text-white text-5xl font-bold">
-                ST
+              <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600">
+                <Image
+                  src="/Simon.JPG"
+                  alt="Portrait of Simon Tian"
+                  width={128}
+                  height={128}
+                  className="h-full w-full object-cover"
+                  priority
+                />
               </div>
             </div>
           </motion.div>
@@ -88,7 +95,7 @@ export default function Hero({ scrollY }: HeroProps) {
           </motion.h1>
 
           <motion.p
-            className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-4"
+            className="text-xl md:text-2xl text-gray-700 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -97,7 +104,7 @@ export default function Hero({ scrollY }: HeroProps) {
           </motion.p>
 
           <motion.p
-            className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto"
+            className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -112,30 +119,19 @@ export default function Hero({ scrollY }: HeroProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <a
-              href="https://github.com/SimonSaysGiveMeSmile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass rounded-full p-4 hover-lift hover:bg-white/30 dark:hover:bg-white/10 transition-all"
-            >
-              <Github size={24} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/simon-tian-1333a3156/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass rounded-full p-4 hover-lift hover:bg-white/30 dark:hover:bg-white/10 transition-all"
-            >
-              <Linkedin size={24} />
-            </a>
-            <a
-              href="https://x.com/realsimontian"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="glass rounded-full p-4 hover-lift hover:bg-white/30 dark:hover:bg-white/10 transition-all"
-            >
-              <Twitter size={24} />
-            </a>
+            {[{ href: "https://github.com/SimonSaysGiveMeSmile", icon: <Github size={24} /> },
+              { href: "https://www.linkedin.com/in/simon-ji%C4%81h%C3%A9-tian-1333a3156", icon: <Linkedin size={24} /> },
+              { href: "https://x.com/realsimontian", icon: <Twitter size={24} /> }].map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass rounded-full p-4 hover-lift hover:bg-white/50 transition-all"
+              >
+                {link.icon}
+              </a>
+            ))}
           </motion.div>
 
           <motion.a
@@ -146,7 +142,7 @@ export default function Hero({ scrollY }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             <div className="animate-bounce">
-              <ArrowDown size={32} className="text-accent" />
+              <ArrowDown size={32} className="text-blue-600" />
             </div>
           </motion.a>
         </motion.div>

@@ -4,15 +4,16 @@ import { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Hobbies from "@/components/Hobbies";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Education from "@/components/Education";
 import Accomplishments from "@/components/Accomplishments";
 import Contact from "@/components/Contact";
+import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -20,44 +21,23 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const stored = localStorage.getItem("simon-theme");
-    if (stored === "light" || stored === "dark") {
-      setTheme(stored);
-      return;
-    }
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setTheme(prefersDark ? "dark" : "light");
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const isDark = theme === "dark";
-    document.documentElement.classList.toggle("dark", isDark);
-    document.body.classList.toggle("dark", isDark);
-    localStorage.setItem("simon-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
   return (
     <main className="min-h-screen relative overflow-hidden">
-      <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute -top-32 -left-10 w-96 h-96 rounded-full opacity-30 blur-[120px] bg-gradient-to-br from-[var(--accent)] via-[var(--accent-tertiary)] to-transparent" />
-        <div className="absolute top-10 right-0 w-[28rem] h-[28rem] rounded-full opacity-20 blur-[140px] bg-gradient-to-br from-[var(--accent-secondary)] via-white/40 to-transparent" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[36rem] h-[36rem] rounded-full opacity-25 blur-[160px] bg-gradient-to-br from-white/40 via-[var(--accent-tertiary)] to-transparent" />
+      <div className="pointer-events-none absolute inset-0 opacity-60">
+        <div className="absolute -top-32 -right-10 w-[40rem] h-[40rem] bg-gradient-to-br from-white/10 via-[#f5d08a]/20 to-transparent blur-[140px]" />
+        <div className="absolute top-10 left-1/3 w-[35rem] h-[35rem] bg-gradient-to-br from-white/20 via-[#dcdfe8]/25 to-transparent blur-[160px]" />
+        <div className="absolute bottom-[-25%] left-[-15%] w-[50rem] h-[50rem] bg-gradient-to-tl from-[#b39b67]/10 via-white/5 to-transparent blur-[200px]" />
       </div>
-      <Navigation theme={theme} toggleTheme={toggleTheme} />
+      <Navigation />
       <Hero scrollY={scrollY} />
       <About />
       <Experience />
       <Projects />
       <Education />
       <Accomplishments />
+      <Hobbies />
       <Contact />
+      <BackToTop />
     </main>
   );
 }
