@@ -49,13 +49,13 @@ export default function Education() {
   ];
 
   return (
-    <section id="education" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="education" className="py-16 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="lux-pill mx-auto mb-6">Education</p>
           <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">Education</h2>
@@ -75,7 +75,7 @@ export default function Education() {
             >
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-20 h-20 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center p-2 overflow-hidden border border-white/20">
+                  <div className="w-20 h-20 rounded-2xl bg-[var(--surface)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] flex items-center justify-center p-2 overflow-hidden">
                     <Image
                       src={edu.logo}
                       alt={`${edu.school} logo`}

@@ -30,7 +30,7 @@ export default function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-2xl border-b border-white/15 bg-white/70 dark:bg-black/40 ${
+      className={`fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-2xl bg-[var(--surface)] ${
         isScrolled ? "shadow-[0_18px_65px_rgba(0,0,0,0.35)]" : "shadow-[0_6px_25px_rgba(0,0,0,0.15)]"
       }`}
     >
@@ -58,7 +58,7 @@ export default function Navigation() {
           <div className="flex items-center gap-3">
             <button
               aria-label="Toggle theme"
-              className="relative inline-flex h-11 w-24 items-center rounded-full border border-white/25 bg-white/20 px-4 text-[var(--text-primary)] shadow-inner transition-all duration-300 hover:border-white/40"
+              className="relative inline-flex h-11 w-24 items-center rounded-full bg-[var(--surface)] px-4 text-[var(--text-primary)] shadow-inner transition-all duration-300 backdrop-filter backdrop-blur-[var(--card-blur)] -webkit-backdrop-filter -webkit-backdrop-blur-[var(--card-blur)]"
               onClick={toggleTheme}
             >
               <span
@@ -72,7 +72,7 @@ export default function Navigation() {
             </button>
 
             <button
-              className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-[var(--text-primary)] shadow-lg"
+              className="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-full bg-[var(--surface)] text-[var(--text-primary)] shadow-lg backdrop-filter backdrop-blur-[var(--card-blur)] -webkit-backdrop-filter -webkit-backdrop-blur-[var(--card-blur)]"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               aria-label="Toggle navigation"
             >
@@ -82,7 +82,7 @@ export default function Navigation() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 space-y-2 rounded-3xl border border-white/10 bg-[var(--surface)] p-4 shadow-2xl">
+          <div className="md:hidden mt-4 space-y-2 rounded-3xl bg-[var(--surface)] p-4 shadow-2xl backdrop-filter backdrop-blur-[var(--card-blur)] -webkit-backdrop-filter -webkit-backdrop-blur-[var(--card-blur)]">
             {navItems.map((item) => (
               <a
                 key={item.name}

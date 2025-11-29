@@ -121,13 +121,13 @@ export default function Projects() {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="projects" className="py-16 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="lux-pill mx-auto mb-6">Projects</p>
           <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">
@@ -138,7 +138,7 @@ export default function Projects() {
           </p>
           
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
             {categories.map((category) => (
               <button
                 key={category.id}
@@ -146,7 +146,7 @@ export default function Projects() {
                 className={`px-4 py-2 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 ${
                   selectedCategory === category.id
                     ? "bg-gradient-to-r from-white via-[#f5d08a] to-[#aeb8ff] text-[#0f0f10] shadow-lg"
-                    : "border border-white/20 text-[var(--text-muted)]"
+                    : "bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] text-[var(--text-muted)]"
                 }`}
               >
                 {category.label}

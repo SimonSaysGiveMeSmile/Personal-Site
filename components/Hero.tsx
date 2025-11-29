@@ -16,45 +16,6 @@ export default function Hero({ scrollY }: HeroProps) {
       className="relative flex min-h-screen items-center justify-center overflow-hidden pt-32"
       id="hero"
     >
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-30"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        <motion.div
-          className="absolute top-40 right-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-multiply filter blur-xl opacity-30"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-        <motion.div
-          className="absolute -bottom-32 left-1/2 w-72 h-72 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-30"
-          animate={{
-            x: [0, 50, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-        />
-      </div>
-
       <div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
         style={{ transform: `translateY(-${parallaxOffset}px)` }}
@@ -71,17 +32,15 @@ export default function Hero({ scrollY }: HeroProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="mb-8"
           >
-            <div className="w-32 h-32 mx-auto rounded-full glass-dark p-1 hover:scale-110 transition-transform duration-300">
-              <div className="w-full h-full rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-blue-600">
-                <Image
-                  src="/Simon.JPG"
-                  alt="Portrait of Simon Tian"
-                  width={128}
-                  height={128}
-                  className="h-full w-full object-cover"
-                  priority
-                />
-              </div>
+            <div className="w-32 h-32 mx-auto rounded-3xl overflow-hidden hover:scale-110 transition-transform duration-1000">
+              <Image
+                src="/Simon.JPG"
+                alt="Portrait of Simon Tian"
+                width={128}
+                height={128}
+                className="h-full w-full object-cover"
+                priority
+              />
             </div>
           </motion.div>
 
@@ -142,7 +101,7 @@ export default function Hero({ scrollY }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.7 }}
           >
             <div className="animate-bounce">
-              <ArrowDown size={32} className="text-blue-600" />
+              <ArrowDown size={32} className="text-black-600" />
             </div>
           </motion.a>
         </motion.div>

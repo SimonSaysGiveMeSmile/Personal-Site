@@ -99,25 +99,14 @@ export default function Accomplishments() {
     },
   ];
 
-  const funFacts = [
-    {
-      title: "The Airport Hack",
-      description: "At CES, arrived 30 minutes before flight with 150 people ahead. Walked to desk, got dedicated check-in line opened, bypassed security via first-class lane. Quick thinking saved the only flight to San Jose that day.",
-    },
-    {
-      title: "The Cornell Sprint",
-      description: "Completed Cornell Master's degree in 1 year (half normal time) while running startups, managing research teams, maintaining highest GPA, and participating in violin, choir, and volunteering.",
-    },
-  ];
-
   return (
-    <section id="accomplishments" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="accomplishments" className="py-16 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="lux-pill mx-auto mb-6">Accomplishments</p>
           <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">Accomplishments</h2>
@@ -126,7 +115,7 @@ export default function Accomplishments() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {accomplishments.map((section, index) => (
             <InteractiveCard
               key={index}
@@ -142,7 +131,7 @@ export default function Accomplishments() {
 
               <div className="space-y-6">
                 {section.items.map((item, itemIndex) => (
-                  <div key={itemIndex} className="border-l-4 border-white/20 pl-4">
+                  <div key={itemIndex} className="pl-4">
                     <div className="flex items-center gap-2 mb-1">
                       <h4 className="font-semibold text-[var(--text-primary)]">{item.title}</h4>
                       {item.date && (
@@ -175,24 +164,6 @@ export default function Accomplishments() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <h3 className="text-3xl font-semibold mb-8 text-center text-[var(--text-primary)]">Notable Stories</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {funFacts.map((fact, index) => (
-              <InteractiveCard
-                key={index}
-                className="p-6"
-              >
-                <h4 className="text-xl font-semibold text-[var(--text-primary)] mb-3">{fact.title}</h4>
-                <p className="text-[var(--text-muted)] leading-relaxed">{fact.description}</p>
-              </InteractiveCard>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

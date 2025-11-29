@@ -32,13 +32,13 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="about" className="py-16 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="lux-pill mx-auto mb-6">About Me</p>
           <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-6">Precision-built intelligence</h2>
@@ -67,7 +67,7 @@ export default function About() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 p-10 md:p-14 text-left"
+          className="mt-12 p-10 md:p-14 text-left"
         >
           <h3 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-6">Background</h3>
           <div className="space-y-4 text-[var(--text-muted)] leading-relaxed">

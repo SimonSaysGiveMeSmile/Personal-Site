@@ -2,14 +2,38 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "@/hooks/useInView";
-import { ChevronDown, ExternalLink, Github, Award } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, ExternalLink, Github, Award, Camera, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, MouseEvent, useRef } from "react";
 import Image from "next/image";
 import InteractiveCard from "@/components/InteractiveCard";
+import ImageLightbox, { LightboxImage, LightboxOrigin } from "@/components/ImageLightbox";
+
+interface LightboxState {
+  title: string;
+  images: LightboxImage[];
+  index: number;
+  origin?: LightboxOrigin | null;
+  isOpen: boolean;
+}
 
 export default function Experience() {
   const [ref, isInView] = useInView({ threshold: 0.1 });
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null);
+  const galleryRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const createOriginFromElement = (el: HTMLElement): LightboxOrigin | null => {
+    if (typeof window === "undefined") return null;
+    const rect = el.getBoundingClientRect();
+    return {
+      top: rect.top,
+      left: rect.left,
+      width: rect.width,
+      height: rect.height,
+      viewportWidth: window.innerWidth,
+      viewportHeight: window.innerHeight,
+    };
+  };
 
   const experiences = [
     {
@@ -165,6 +189,20 @@ export default function Experience() {
         "Global audience reach"
       ],
       images: 3,
+      gallery: [
+        {
+          src: "/Eng.com-1.png",
+          alt: "Incus and ESA Partner to Bring 3D Printing Technology to Outer Space article thumbnail",
+        },
+        {
+          src: "/Eng.com-2.png",
+          alt: "Why This 3D Printer is Slanted and Why It Matters article thumbnail",
+        },
+        {
+          src: "/Eng.com-3.png",
+          alt: "JET Smashes Nuclear Fusion Energy Record article thumbnail",
+        },
+      ],
     },
     {
       company: "Bombardier Aerospace",
@@ -193,14 +231,57 @@ export default function Experience() {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
+  const openLightbox = (
+    title: string,
+    gallery?: LightboxImage[],
+    startIndex = 0,
+    origin?: LightboxOrigin | null
+  ) => {
+    if (!gallery || gallery.length === 0) return;
+    setLightbox({ title, images: gallery, index: startIndex, origin: origin ?? null, isOpen: true });
+  };
+
+  const navigateLightbox = (direction: "prev" | "next") => {
+    if (!lightbox) return;
+    const { images, index } = lightbox;
+    const nextIndex = direction === "next" ? (index + 1) % images.length : (index - 1 + images.length) % images.length;
+    setLightbox({ ...lightbox, index: nextIndex });
+  };
+
+  const selectLightboxImage = (idx: number) => {
+    if (!lightbox) return;
+    setLightbox({ ...lightbox, index: idx });
+  };
+
+  const scrollGallery = (expIndex: number, direction: "prev" | "next") => {
+    const container = galleryRefs.current[expIndex];
+    if (!container) return;
+
+    const firstCard = container.querySelector<HTMLElement>("[data-gallery-card]");
+    if (!firstCard) return;
+
+    const style = window.getComputedStyle(container);
+    const gap = parseFloat(style.columnGap || style.gap || "0");
+    const cardWidth = firstCard.offsetWidth + gap;
+    const scrollBy = cardWidth * 3; // show up to 3 images per view
+
+    const nextLeft =
+      direction === "next" ? container.scrollLeft + scrollBy : container.scrollLeft - scrollBy;
+
+    container.scrollTo({
+      left: nextLeft,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <section id="experience" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="experience" className="py-16 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-14"
         >
           <p className="lux-pill mx-auto mb-6">Experience</p>
           <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">
@@ -245,7 +326,7 @@ export default function Experience() {
                   >
                     {/* Company Logo/Profile */}
                     <div className="flex-shrink-0">
-                      <div className="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur flex items-center justify-center text-[var(--text-primary)] font-bold text-lg overflow-hidden border border-white/20 shadow-inner">
+                      <div className="w-14 h-14 rounded-2xl bg-[var(--surface)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] flex items-center justify-center text-[var(--text-primary)] font-bold text-lg overflow-hidden shadow-inner">
                         {exp.logo ? (
                           <Image src={exp.logo} alt={exp.company} width={56} height={56} className="w-full h-full object-cover" />
                         ) : (
@@ -290,7 +371,7 @@ export default function Experience() {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-6 pt-2 border-t border-white/15">
+                        <div className="px-5 pb-6 pt-2">
                           {/* Mobile Period */}
                           <p className="text-sm text-[var(--text-muted)] mb-4 sm:hidden font-medium">{exp.period}</p>
 
@@ -310,7 +391,7 @@ export default function Experience() {
                                   initial={{ opacity: 0, y: 10 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ delay: i * 0.1 }}
-                                  className="flex items-center gap-2 text-sm text-[var(--text-muted)] rounded-2xl px-3 py-2 border border-white/10"
+                                  className="flex items-center gap-2 text-sm text-[var(--text-muted)] rounded-2xl px-3 py-2 bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)]"
                                 >
                                   <div className="w-1.5 h-1.5 rounded-full bg-white/70 flex-shrink-0" />
                                   <span>{highlight}</span>
@@ -322,49 +403,92 @@ export default function Experience() {
                           {/* Photo Wall */}
                           <div className="mb-5">
                             <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Gallery</h4>
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                              {exp.gallery && exp.gallery.length > 0
-                                ? exp.gallery.map((image, i) => (
-                                    <motion.div
-                                      key={image.src}
-                                      initial={{ opacity: 0, scale: 0.8 }}
-                                      animate={{ opacity: 1, scale: 1 }}
-                                      transition={{ delay: i * 0.1 }}
-                                      whileHover={{ scale: 1.05, rotate: 1 }}
-                                      className="aspect-square rounded-2xl overflow-hidden border border-white/15 bg-gradient-to-br from-white/10 to-white/5 shadow-inner cursor-pointer group"
-                                    >
-                                      <div className="relative w-full h-full">
-                                        <Image
-                                          src={image.src}
-                                          alt={image.alt}
-                                          fill
-                                          sizes="(min-width: 1024px) 200px, (min-width: 768px) 33vw, 50vw"
-                                          className="object-cover"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
-                                        <div className="absolute bottom-2 left-2 text-[10px] font-medium text-white bg-black/50 backdrop-blur px-2 py-1 rounded-full">
-                                          {image.alt}
+                            <div className="relative">
+                              {exp.gallery && exp.gallery.length > 0 ? (
+                                <>
+                                  <div
+                                    ref={(el) => {
+                                      galleryRefs.current[index] = el;
+                                    }}
+                                    className="flex flex-nowrap gap-3 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory"
+                                  >
+                                    {exp.gallery.map((image, i) => (
+                                      <motion.div
+                                        key={image.src}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        transition={{ delay: i * 0.08 }}
+                                        whileHover={{ scale: 1.05, rotate: 0.5 }}
+                                        data-gallery-card
+                                        className="relative aspect-[16/9] flex-none w-full sm:w-[70%] md:w-1/3 rounded-2xl overflow-hidden bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] shadow-inner cursor-pointer group snap-center"
+                                        role="button"
+                                        tabIndex={0}
+                                        onClick={(e: MouseEvent<HTMLDivElement>) =>
+                                          openLightbox(
+                                            exp.company,
+                                            exp.gallery,
+                                            i,
+                                            createOriginFromElement(e.currentTarget)
+                                          )
+                                        }
+                                      >
+                                        <div className="relative w-full h-full">
+                                          <Image
+                                            src={image.src}
+                                            alt={image.alt}
+                                            fill
+                                            sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
+                                            className="object-cover"
+                                          />
+                                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
+                                          <div className="absolute bottom-2 left-2 text-[10px] font-medium text-white bg-black/50 backdrop-blur px-2 py-1 rounded-full">
+                                            {image.alt}
+                                          </div>
                                         </div>
-                                      </div>
-                                    </motion.div>
-                                  ))
-                                : Array.from({ length: exp.images }).map((_, i) => (
+                                      </motion.div>
+                                    ))}
+                                  </div>
+
+                                  {exp.gallery.length > 3 && (
+                                    <>
+                                      <button
+                                        type="button"
+                                        className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[var(--surface)]/80 p-2 text-[var(--text-primary)] shadow-lg backdrop-blur hover:bg-[var(--surface)]"
+                                        onClick={() => scrollGallery(index, "prev")}
+                                        aria-label="Scroll previous images"
+                                      >
+                                        <ChevronLeft size={18} />
+                                      </button>
+                                      <button
+                                        type="button"
+                                        className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[var(--surface)]/80 p-2 text-[var(--text-primary)] shadow-lg backdrop-blur hover:bg-[var(--surface)]"
+                                        onClick={() => scrollGallery(index, "next")}
+                                        aria-label="Scroll next images"
+                                      >
+                                        <ChevronRight size={18} />
+                                      </button>
+                                    </>
+                                  )}
+                                </>
+                              ) : (
+                                <div className="flex flex-nowrap gap-3 overflow-x-auto pb-2 scroll-smooth">
+                                  {Array.from({ length: exp.images }).map((_, i) => (
                                     <motion.div
                                       key={i}
                                       initial={{ opacity: 0, scale: 0.8 }}
                                       animate={{ opacity: 1, scale: 1 }}
                                       transition={{ delay: i * 0.1 }}
                                       whileHover={{ scale: 1.05, rotate: 1 }}
-                                      className="aspect-square rounded-2xl overflow-hidden border border-white/15 bg-gradient-to-br from-white/10 to-white/5 shadow-inner cursor-pointer group"
+                                      className="relative aspect-[16/9] flex-none w-full sm:w-[70%] md:w-1/3 rounded-2xl overflow-hidden bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] shadow-inner cursor-pointer group"
                                     >
-                                      <div className="w-full h-full flex items-center justify-center text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">
-                                        <div className="text-center">
-                                          <div className="text-3xl mb-1">📷</div>
-                                          <div className="text-xs font-medium">Image {i + 1}</div>
-                                        </div>
+                                      <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">
+                                        <Camera size={28} />
+                                        <div className="text-xs font-medium">Image {i + 1}</div>
                                       </div>
                                     </motion.div>
                                   ))}
+                                </div>
+                              )}
                             </div>
                           </div>
 
@@ -389,7 +513,7 @@ export default function Experience() {
                                 href={exp.github}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 text-[var(--text-primary)] text-sm font-semibold"
+                                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--surface)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] text-[var(--text-primary)] text-sm font-semibold"
                                 onClick={(e) => e.stopPropagation()}
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
@@ -397,6 +521,46 @@ export default function Experience() {
                                 <Github size={16} />
                                 View GitHub
                               </motion.a>
+                            )}
+                            {exp.company === "engineering.com" && (
+                              <>
+                                <motion.a
+                                  href="https://www.engineering.com/incus-and-esa-partner-to-bring-3d-printing-technology-to-outer-space/"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] text-[var(--text-primary)] text-xs sm:text-sm font-semibold"
+                                  onClick={(e) => e.stopPropagation()}
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                >
+                                  <ExternalLink size={14} />
+                                  Incus & ESA 3D Printing Article
+                                </motion.a>
+                                <motion.a
+                                  href="https://www.engineering.com/why-this-3d-printer-is-slanted-and-why-it-matters/"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] text-[var(--text-primary)] text-xs sm:text-sm font-semibold"
+                                  onClick={(e) => e.stopPropagation()}
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                >
+                                  <ExternalLink size={14} />
+                                  Slanted 3D Printer Article
+                                </motion.a>
+                                <motion.a
+                                  href="https://www.engineering.com/jet-smashes-nuclear-fusion-energy-record/"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] text-[var(--text-primary)] text-xs sm:text-sm font-semibold"
+                                  onClick={(e) => e.stopPropagation()}
+                                  whileHover={{ scale: 1.02 }}
+                                  whileTap={{ scale: 0.98 }}
+                                >
+                                  <ExternalLink size={14} />
+                                  JET Fusion Energy Record Article
+                                </motion.a>
+                              </>
                             )}
                           </div>
                         </div>
@@ -409,6 +573,19 @@ export default function Experience() {
           </div>
         </div>
       </div>
+
+      <ImageLightbox
+        isOpen={!!lightbox?.isOpen}
+        title={lightbox?.title ?? ""}
+        images={lightbox?.images ?? []}
+        index={lightbox?.index ?? 0}
+        onClose={() =>
+          setLightbox((prev) => (prev ? { ...prev, isOpen: false } : prev))
+        }
+        onNavigate={navigateLightbox}
+        onSelect={selectLightboxImage}
+        origin={lightbox?.origin}
+      />
     </section>
   );
 }

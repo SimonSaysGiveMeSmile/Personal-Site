@@ -56,13 +56,13 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 px-4 sm:px-6 lg:px-8" ref={ref}>
+    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
           <p className="lux-pill mx-auto mb-6">Contact</p>
           <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">Get In Touch</h2>
@@ -103,7 +103,7 @@ export default function Contact() {
               ))}
             </div>
 
-            <div className="mt-8 pt-8 border-t border-white/15">
+            <div className="mt-8 pt-8">
               <h4 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">Current Role</h4>
               <p className="text-[var(--text-muted)]">
                 <span className="font-semibold">CEO</span> with 79% equity, committed to building
@@ -149,7 +149,7 @@ export default function Contact() {
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-16 text-center"
+          className="mt-12 text-center"
         >
           <InteractiveCard className="p-6">
             <p className="text-[var(--text-muted)]">
