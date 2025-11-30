@@ -53,7 +53,7 @@ export default function Projects() {
     },
     {
       title: "Immersive VR Research Platform",
-      period: "Jan 2024 - Present",
+      period: "Jan 2024 - Dec 2024",
       description:
         "Developing advanced VR research methodologies for human-computer interaction studies. Focus on spatial computing, haptic feedback, and cognitive load assessment in virtual environments.",
       tags: ["VR", "Research", "HCI", "Spatial Computing"],

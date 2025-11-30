@@ -27,7 +27,7 @@ export default function About() {
     {
       icon: <Award size={32} />,
       title: "Academic Excellence",
-      description: "Cornell MS in 1 year with highest GPA, Mensa member (99th percentile)",
+      description: "Cornell MS in 1 year, Mensa IQ test score 135 (99th percentile)",
     },
   ];
 
@@ -72,14 +72,14 @@ export default function About() {
           <h3 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-6">Background</h3>
           <div className="space-y-4 text-[var(--text-muted)] leading-relaxed">
             <p>
-              Currently serving as CEO with 79% equity in my latest venture, I&apos;m building at the intersection
+              Currently serving as CEO with 80% equity in my latest venture, I&apos;m building at the intersection
               of AI and physical products. My journey includes founding SkyrisAI (YC top 10%), where I designed
-              the world&apos;s flying AI pet with emotional intelligence, and FreeRange Drones (YC interviewee), an
+              one of the first flying AI pets with emotional intelligence, and FreeRange Drones (YC interviewee), an
               autonomous delivery network powered by LLMs.
             </p>
             <p>
-              I completed my Master&apos;s in Systems Engineering and Data Science at Cornell in half the typical time
-              while managing research, startups, and maintaining the highest GPA. My technical foundation comes
+              I completed my Master&apos;s in Systems Engineering and Data Science at Cornell on an accelerated timeline
+              while managing research, startups, and maintaining a top GPA. My technical foundation comes
               from hands-on experience at companies like ByteDance, Bombardier Aerospace, and UC San Diego&apos;s
               Computer Vision lab.
             </p>

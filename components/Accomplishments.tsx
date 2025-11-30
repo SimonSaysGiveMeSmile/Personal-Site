@@ -64,7 +64,7 @@ export default function Accomplishments() {
         {
           title: "Mensa IQ Test",
           date: "2023",
-          description: "Score: 135 (99th percentile)",
+          description: "Score: 133 (99th percentile)",
           links: [
             { label: "Official Result", url: "https://www.mensa.org/mensa-iq-challenge/#test" },
           ],

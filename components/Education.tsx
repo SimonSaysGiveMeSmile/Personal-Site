@@ -14,9 +14,9 @@ export default function Education() {
       school: "Cornell University",
       degree: "Master of Science",
       field: "Systems Engineering and Data Science",
-      period: "Aug 2023 - Dec 2024",
+      period: "Sep 2023 - Dec 2024",
       logo: "/cornell.png",
-      highlight: "Completed in 1 year (half the typical time) with highest GPA while managing startups and research",
+      highlight: "Completed on an accelerated timeline with a top GPA while managing startups and research",
       achievements: [
         "Master's thesis on VR and LLM-backed autonomous driving",
         "Research team management",
@@ -25,7 +25,7 @@ export default function Education() {
     },
     {
       school: "Carleton University",
-      degree: "Bachelor of Arts",
+      degree: "Bachelor of Engineering",
       field: "Electrical Engineering",
       period: "Sep 2018 - May 2023",
       logo: "/carleton.png",

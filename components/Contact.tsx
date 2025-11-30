@@ -24,7 +24,7 @@ export default function Contact() {
     {
       icon: <MapPin size={24} />,
       label: "Location",
-      value: "East Palo Alto, CA",
+      value: "San Francisco, CA",
     },
   ];
 
@@ -106,7 +106,7 @@ export default function Contact() {
             <div className="mt-8 pt-8">
               <h4 className="text-xl font-semibold mb-4 text-[var(--text-primary)]">Current Role</h4>
               <p className="text-[var(--text-muted)]">
-                <span className="font-semibold">CEO</span> with 79% equity, committed to building
+                <span className="font-semibold">CEO</span> with 80% equity, committed to building
                 innovative AI and robotics solutions. Open to collaborations, investments, and
                 exciting opportunities.
               </p>

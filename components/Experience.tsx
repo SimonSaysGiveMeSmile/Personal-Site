@@ -79,16 +79,16 @@ export default function Experience() {
       ],
     },
     {
-      company: "Skyris Corp.",
-      role: "CTO",
+      company: "SkyrisAI Corp.",
+      role: "Co-Founder & CTO",
       period: "Jan 2025 - Jun 2025",
       description:
-        "At SkyrisAI, I designed the world's flying AI pet that senses and responds to user emotions using multimodal input. I led product strategy, combining emotion recognition, natural language processing, and expressive physical movement. Our prototype incorporated real-time affective computing, computer vision, and GPT-powered dialogue. SkyrisAI redefines emotional companionship through embodied intelligence, blending robotics and personality in a deeply interactive experience.",
+        "At SkyrisAI, I designed one of the first flying AI pets that senses and responds to user emotions using multimodal input. I led product strategy, combining emotion recognition, natural language processing, and expressive physical movement. Our prototype incorporated real-time affective computing, computer vision, and GPT-powered dialogue. SkyrisAI redefines emotional companionship through embodied intelligence, blending robotics and personality in a deeply interactive experience.",
       website: "https://skyrisai.com/",
       github: "",
       logo: "/skyris.jpeg",
       highlights: [
-        "World's first flying AI pet",
+        "One of the first flying AI pets",
         "Multimodal emotion recognition",
         "Real-time affective computing"
       ],
@@ -102,8 +102,8 @@ export default function Experience() {
     },
     {
       company: "FreeRange Drones",
-      role: "CTO",
-      period: "Sep 2024 - Dec 2024",
+      role: "Co-Founder & CTO",
+      period: "Sep 2024 - Jan 2025",
       description:
         "I co-founded FreeRange to build an autonomous delivery drone network powered by LLMs. I led development of drone flight control systems, integrating real-time language input with spatial planning to optimize routes. We designed battery-swapping base stations on vehicles, enabling 24/7 drone operation. I worked across hardware integration, regulatory compliance, and investor engagement, pushing the boundaries of AI-driven logistics in suburban environments.",
       website: "",
