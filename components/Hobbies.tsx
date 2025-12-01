@@ -181,7 +181,7 @@ export default function Hobbies() {
           <p className="lux-pill mx-auto mb-6">Lifestyle</p>
           <h2 className="text-4xl md:text-5xl font-semibold text-[var(--text-primary)] mb-4">Hobbies & Interests</h2>
           <p className="text-lg text-[var(--text-muted)] max-w-3xl mx-auto">
-            Beyond coding and innovation, I find balance through music and sports. These passions fuel my creativity and keep me energized.
+            Beyond coding and innovation, I find balance through music and sports. These passions fuel my creativity and keep me energised.
           </p>
         </motion.div>
 
@@ -334,7 +334,7 @@ export default function Hobbies() {
             <h3 className="text-3xl font-semibold">Animal Companions</h3>
           </div>
           <p className="text-center text-[var(--text-muted)] max-w-3xl mx-auto mb-8">
-            I recharge with animals as much as athletics—raising a guinea pig, co-owning Dodo the bunny, and visiting Bay Area farms keeps my empathy sharp.
+            I recharge with animals as much as athletics—raising a guinea pig, co-owning Dodo the bunny and visiting Bay Area farms keeps my empathy sharp.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {animalCompanions.map((hobby, index) => (

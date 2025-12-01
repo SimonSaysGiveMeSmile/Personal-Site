@@ -27,7 +27,8 @@ export default function About() {
     {
       icon: <Award size={32} />,
       title: "Academic Excellence",
-      description: "Cornell MS in 1 year, Mensa IQ test score 135 (99th percentile)",
+      description:
+        "Completed an accelerated Cornell M.S. ahead of the typical two-year schedule while balancing startups and research; achieved a high GPA. Scored 133 (~98th percentile) on Mensa’s online IQ challenge.",
     },
   ];
 
@@ -72,21 +73,22 @@ export default function About() {
           <h3 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-6">Background</h3>
           <div className="space-y-4 text-[var(--text-muted)] leading-relaxed">
             <p>
-              Currently serving as CEO with 80% equity in my latest venture, I&apos;m building at the intersection
-              of AI and physical products. My journey includes founding SkyrisAI (YC top 10%), where I designed
-              one of the first flying AI pets with emotional intelligence, and FreeRange Drones (YC interviewee), an
-              autonomous delivery network powered by LLMs.
+              Currently serving as CEO with 80% equity in my latest venture, I&apos;m building at the intersection of AI
+              and physical products. My journey includes founding SkyrisAI (YC top 10%), where I designed a novel flying
+              AI pet concept with emotional intelligence, and FreeRange Drones (YC interviewee), an autonomous delivery
+              network powered by large language models. These experiences taught me to blend robotics, AI, and product
+              design into emotionally engaging systems.
             </p>
             <p>
-              I completed my Master&apos;s in Systems Engineering and Data Science at Cornell on an accelerated timeline
-              while managing research, startups, and maintaining a top GPA. My technical foundation comes
-              from hands-on experience at companies like ByteDance, Bombardier Aerospace, and UC San Diego&apos;s
-              Computer Vision lab.
+              I completed my Master&apos;s in Systems Engineering and Data Science at Cornell on an accelerated timeline,
+              ahead of the program&apos;s usual two-year duration, while managing research teams, startups, and
+              maintaining a high GPA. My technical foundation also includes hands-on experience at ByteDance, Bombardier
+              Aerospace, and UC San Diego&apos;s computer vision lab.
             </p>
             <p>
               Beyond startups, I&apos;ve won hackathons, published research on semantic segmentation and autonomous
-              driving, and contributed to open-source innovations like implementing VR in the Carla simulator
-              for the first time.
+              driving, and contributed to open-source innovations like integrating virtual reality into the CARLA
+              autonomous-vehicle simulator—one of the early VR implementations for that platform.
             </p>
           </div>
         </InteractiveCard>

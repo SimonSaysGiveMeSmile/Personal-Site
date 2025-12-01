@@ -16,7 +16,7 @@ export default function Projects() {
       title: "Skyris - Flying AI Pet",
       period: "Jan 2025 - Jun 2025",
       description:
-        "YC applicant for the X25 batch, top 10%. Created a functional prototype and invented a new model architecture to improve the emotional response of generative models.",
+        "YC applicant for the X25 batch, top 10%. Created a functional prototype and invented a new model architecture to improve the emotional response of generative models. Developed a novel flying AI pet concept to explore emotional companionship.",
       tags: ["AI", "Robotics", "Computer Vision", "NLP"],
       links: [
         { type: "website", url: "https://skyrisai.com/", icon: <ExternalLink size={16} /> },
@@ -29,7 +29,7 @@ export default function Projects() {
       title: "FreeRange - Autonomous Drone Delivery",
       period: "Sep 2024 - Dec 2024",
       description:
-        "YC interviewee for the W25 batch. Invented a distributed drone delivery system with mobile basestation and automatic battery swapping.",
+        "YC interviewee for the W25 batch. Invented a distributed drone-delivery system with mobile base stations and automatic battery swapping.",
       tags: ["Autonomous Systems", "LLM", "Hardware", "Logistics"],
       links: [
         { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/FreeRange", icon: <Github size={16} /> },
@@ -43,7 +43,7 @@ export default function Projects() {
       title: "VR-Enhanced Autonomous Vehicle Testing",
       period: "Sep 2023 - Dec 2024",
       description:
-        "Research project implementing VR into Carla simulator for immersive autonomous driving system testing. First-of-its-kind integration enabling real-time VR interaction with simulated vehicles.",
+        "Research project integrating virtual reality into the CARLA simulator for immersive autonomous-driving system testing. This was one of the early open-source efforts to couple VR with CARLA, enabling real-time VR interaction with simulated vehicles.",
       tags: ["VR", "Python", "Autonomous Driving", "Research"],
       links: [
         { type: "video", url: "https://www.youtube.com/watch?v=Tmoptph4ix0", icon: <Video size={16} /> },
@@ -52,54 +52,10 @@ export default function Projects() {
       category: "research",
     },
     {
-      title: "Immersive VR Research Platform",
-      period: "Jan 2024 - Dec 2024",
-      description:
-        "Developing advanced VR research methodologies for human-computer interaction studies. Focus on spatial computing, haptic feedback, and cognitive load assessment in virtual environments.",
-      tags: ["VR", "Research", "HCI", "Spatial Computing"],
-      links: [
-        { type: "report", url: "https://cornell.box.com/s/vr-research-methodology", icon: <FileText size={16} /> },
-      ],
-      category: "research",
-    },
-    {
-      title: "AuthenTEZ - Blockchain NFC Authentication",
-      period: "Mar 2024",
-      description:
-        "NFC-based blockchain authentication system to eliminate counterfeit products. Won 2nd place in hackathon, demonstrating practical Web3 applications.",
-      tags: ["Blockchain", "NFC", "Hardware", "Web3"],
-      links: [
-        { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/AuthenTEZ-Project-Demo", icon: <Github size={16} /> },
-      ],
-      category: "personal",
-    },
-    {
-      title: "AI-Powered Personal Assistant",
-      period: "Jun 2024 - Aug 2024",
-      description:
-        "Built a custom AI assistant using fine-tuned language models for personal productivity. Features include natural language task management and intelligent scheduling.",
-      tags: ["AI", "NLP", "Productivity", "Personal"],
-      links: [
-        { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/Personal-AI-Assistant", icon: <Github size={16} /> },
-      ],
-      category: "personal",
-    },
-    {
-      title: "Smart Home IoT Network",
-      period: "Jan 2023 - May 2023",
-      description:
-        "Designed and implemented a comprehensive smart home system with custom sensors, automated controls, and energy optimization algorithms.",
-      tags: ["IoT", "Smart Home", "Automation", "Energy"],
-      links: [
-        { type: "github", url: "https://github.com/SimonSaysGiveMeSmile/SmartHome-IoT", icon: <Github size={16} /> },
-      ],
-      category: "personal",
-    },
-    {
       title: "Computer Vision Security System",
       period: "Sep 2022 - Apr 2023",
       description:
-        "Cloud-based facial recognition system with SHA-256 encryption and real-time processing. Demonstrates practical applications of computer vision in security.",
+        "Cloud-based facial recognition system with SHA-256 encryption and real-time processing. Demonstrated practical applications of computer vision in security, contributing a working implementation alongside a body of research on cloud-based facial recognition.",
       tags: ["Computer Vision", "Cloud Computing", "Security", "IoT"],
       links: [
         { type: "report", url: "https://cornell.box.com/s/m6wu3fb3qwln2jwe6jpsjbywx9ktld0k", icon: <FileText size={16} /> },

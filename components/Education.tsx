@@ -16,11 +16,12 @@ export default function Education() {
       field: "Systems Engineering and Data Science",
       period: "Sep 2023 - Dec 2024",
       logo: "/cornell.png",
-      highlight: "Completed on an accelerated timeline with a top GPA while managing startups and research",
+      highlight:
+        "Completed the program on an accelerated timeline ahead of the typical two-year duration while maintaining a high GPA",
       achievements: [
+        "Managed a research team while launching multiple startups concurrently",
         "Master's thesis on VR and LLM-backed autonomous driving",
-        "Research team management",
-        "Full course load while founding multiple startups",
+        "Balanced an accelerated course load with research and entrepreneurship",
       ],
     },
     {
@@ -30,9 +31,9 @@ export default function Education() {
       period: "Sep 2018 - May 2023",
       logo: "/carleton.png",
       achievements: [
-        "Multiple co-op positions at Bombardier Aerospace",
-        "Published facial recognition research",
-        "Active in engineering clubs and maker spaces",
+        "Studied electrical engineering in an accredited B.Eng. program with specialisations in microelectronics and communications",
+        "Held multiple co-op positions at Bombardier Aerospace",
+        "Published facial recognition research and participated in engineering clubs and maker spaces",
       ],
     },
     {

@@ -38,17 +38,17 @@ export default function Experience() {
   const experiences = [
     {
       company: "Hireal Inc.",
-      role: "Founder",
+      role: "Founder & CEO",
       period: "Aug 2025 - Present",
       description:
-        "Founded Hireal, an HR agent that helps startups and enterprises evaluate candidates using open internet information. Built the product from a hackathon prototype to a working solution in three weeks, onboarding three pilot customers. The platform generates evidence-linked 'Integrity Strip' scorecards powered by GitHub/LinkedIn signals, with Google login and Stripe payment integration. Revenue model includes $200 per user seat subscriptions and $3-$30 pay-per-use assessment fees, targeting 50 enterprise partnerships in the upcoming year.",
+        "Founded Hireal, an HR agent that helps startups and enterprises evaluate candidates using open-internet information. Built the product from a hackathon prototype to a working solution in three weeks, onboarding three pilot customers. The platform generates evidence-linked scorecards powered by GitHub and LinkedIn signals, with Google login and Stripe payment integration. Revenue model includes subscription fees and pay-per-use assessments, with a goal of securing enterprise partnerships.",
       website: "https://hireal.pro",
       github: "",
       logo: "/hireal.png",
       highlights: [
         "Built MVP in 3 weeks",
         "3 pilot customers onboarded",
-        "Targeting 50 enterprise partnerships"
+        "Scaling toward enterprise partnerships",
       ],
       images: 1,
       gallery: [
@@ -57,17 +57,17 @@ export default function Experience() {
     },
     {
       company: "JobHatch Inc.",
-      role: "Founder",
+      role: "Founder & CEO",
       period: "May 2025 - Aug 2025",
       description:
-        "Founded JobHatch Inc. (Delaware C-Corp) to create the next-generation, AI-driven career platform for both job seekers and employers. Launched MVP in under 2 weeks, built 300+ organic waitlist users, and conducted 283 survey responses with 8 user interviews. Accepted into Beta University Cohort 9. Relocated from Ithaca to Palo Alto to be closer to customers and investors, living out of hotels for a month to focus on the business.",
+        "Founded JobHatch Inc. (Delaware C-Corp) to create an AI-driven career platform for job seekers and employers. Launched an MVP in under two weeks, built a 300-person waitlist organically, and conducted extensive user research and interviews. Accepted into Beta University Cohort 9. Relocated from Ithaca to the Bay Area to be closer to customers and investors.",
       website: "https://jobhatch.com",
       github: "",
       logo: "/jobhatch.jpg",
       highlights: [
         "300+ waitlist users organically",
         "283 survey responses",
-        "Beta University Cohort 9"
+        "Beta University Cohort 9 participant",
       ],
       images: 5,
       gallery: [
@@ -83,14 +83,14 @@ export default function Experience() {
       role: "Co-Founder & CTO",
       period: "Jan 2025 - Jun 2025",
       description:
-        "At SkyrisAI, I designed one of the first flying AI pets that senses and responds to user emotions using multimodal input. I led product strategy, combining emotion recognition, natural language processing, and expressive physical movement. Our prototype incorporated real-time affective computing, computer vision, and GPT-powered dialogue. SkyrisAI redefines emotional companionship through embodied intelligence, blending robotics and personality in a deeply interactive experience.",
+        "At SkyrisAI, I designed a novel flying AI pet concept that senses and responds to user emotions using multimodal input. I led product strategy, combining emotion recognition, natural language processing, and expressive physical movement. Our prototype incorporated real-time affective computing, computer vision, and GPT-powered dialogue to explore how embodied intelligence could foster emotional companionship.",
       website: "https://skyrisai.com/",
       github: "",
       logo: "/skyris.jpeg",
       highlights: [
-        "One of the first flying AI pets",
-        "Multimodal emotion recognition",
-        "Real-time affective computing"
+        "Developed a flying AI pet concept with emotional AI",
+        "Integrated multimodal emotion recognition",
+        "Implemented real-time affective computing and GPT-powered dialogue",
       ],
       images: 4,
       gallery: [
@@ -105,14 +105,14 @@ export default function Experience() {
       role: "Co-Founder & CTO",
       period: "Sep 2024 - Jan 2025",
       description:
-        "I co-founded FreeRange to build an autonomous delivery drone network powered by LLMs. I led development of drone flight control systems, integrating real-time language input with spatial planning to optimize routes. We designed battery-swapping base stations on vehicles, enabling 24/7 drone operation. I worked across hardware integration, regulatory compliance, and investor engagement, pushing the boundaries of AI-driven logistics in suburban environments.",
+        "Co-founded FreeRange to build an autonomous delivery drone network powered by large language models. Led development of drone flight-control systems, integrating natural-language input with spatial planning to optimize routes. Designed battery-swapping base stations on vehicles for 24/7 operation and worked across hardware integration, regulatory compliance, and investor engagement.",
       website: "",
       github: "https://github.com/SimonSaysGiveMeSmile/FreeRange",
       logo: "/freerange.png",
       highlights: [
-        "LLM-powered flight control",
-        "24/7 autonomous operation",
-        "Battery-swapping stations"
+        "Language-driven flight control for drones",
+        "24/7 autonomous operation via battery-swapping stations",
+        "Oversaw hardware, regulatory, and investor relations",
       ],
       images: 3,
       gallery: [

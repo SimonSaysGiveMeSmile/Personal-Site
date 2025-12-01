@@ -16,7 +16,8 @@ export default function Accomplishments() {
         {
           title: "Master's Thesis: VR and LLM-backed Autonomous Driving",
           date: "Nov 2024",
-          description: "Published research on autonomous driving systems using VR testbeds and large language models",
+          description:
+            "Published research on autonomous-driving systems using VR testbeds and large language models, including website, ProQuest, and full-text links",
           links: [
             { label: "Website", url: "https://sites.google.com/cornell.edu/ids-vr-llm-pcad" },
             { label: "ProQuest", url: "https://www.proquest.com/docview/3153491518" },
@@ -26,7 +27,7 @@ export default function Accomplishments() {
         {
           title: "Literature Review on Semantic Image Segmentation",
           date: "Nov 2023",
-          description: "Published comprehensive review on Fully Convolutional Networks for Semantic Segmentation",
+          description: "Published a comprehensive review on fully convolutional networks for semantic segmentation",
           links: [
             { label: "ResearchGate", url: "https://www.researchgate.net/publication/377220702_Literature_Review_on_Fully_Convolutional_Networks_for_Semantic_Segmentation_by_Jonathan_Long_Evan_Shelhamer_Trevor_Darrell" },
           ],
@@ -40,7 +41,8 @@ export default function Accomplishments() {
         {
           title: "2nd Place - Sia Partners H-W3B NYC World League Hackathon",
           date: "Mar 2024",
-          description: "Won 2nd place with AuthenTEZ, a blockchain-based NFC authentication system",
+          description:
+            "AuthenTEZ, an NFC-based blockchain access point, won second place at this competition",
           links: [
             { label: "LinkedIn Post", url: "https://www.linkedin.com/posts/maximegonnet_the-first-sia-partners-h-w3b-2024-new-york-activity-7170810307525746688-YzSX" },
           ],
@@ -48,12 +50,12 @@ export default function Accomplishments() {
         {
           title: "YC Top 10% - Skyris AI (X25 Batch)",
           date: "2025",
-          description: "Selected as top 10% applicant for Y Combinator with flying AI pet innovation",
+          description: "Selected as a top 10% applicant for Y Combinator",
         },
         {
           title: "YC Interview - FreeRange Drones (W25 Batch)",
           date: "2024",
-          description: "Advanced to interview stage for autonomous drone delivery network",
+          description: "Advanced to the interview stage for Y Combinator",
         },
       ],
     },
@@ -64,7 +66,8 @@ export default function Accomplishments() {
         {
           title: "Mensa IQ Test",
           date: "2023",
-          description: "Score: 133 (99th percentile)",
+          description:
+            "Scored 133, placing around the 98th percentile on Mensa’s online IQ challenge. (Note: the online challenge is for fun and does not confer Mensa membership.)",
           links: [
             { label: "Official Result", url: "https://www.mensa.org/mensa-iq-challenge/#test" },
           ],
