@@ -58,7 +58,7 @@ export default function Navigation() {
           <div className="flex items-center gap-3">
             <button
               aria-label="Toggle theme"
-              className="relative inline-flex h-11 w-24 items-center rounded-full bg-[var(--surface)] px-4 text-[var(--text-primary)] shadow-inner transition-all duration-300 backdrop-filter backdrop-blur-[var(--card-blur)] -webkit-backdrop-filter -webkit-backdrop-blur-[var(--card-blur)]"
+              className={`relative inline-flex h-11 w-24 items-center rounded-full bg-[var(--surface)] px-4 text-[var(--text-primary)] shadow-inner transition-all duration-300 backdrop-filter backdrop-blur-[var(--card-blur)] -webkit-backdrop-filter -webkit-backdrop-blur-[var(--card-blur)] ${!isDark ? 'border border-gray-500' : ''}`}
               onClick={toggleTheme}
             >
               <span
@@ -66,8 +66,8 @@ export default function Navigation() {
                 style={{ transform: `translateX(${isDark ? 52 : 0}px)` }}
               />
               <div className="relative z-10 flex w-full items-center justify-between">
-                <Sun size={16} className="text-[#f5c16c]" />
-                <Moon size={16} className="text-[#d7dae4]" />
+                <Sun size={16} className="text-[#f5c16c] -ml-0.5" />
+                <Moon size={16} className="text-[#9ca3af] -mr-0.5" />
               </div>
             </button>
 

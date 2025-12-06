@@ -401,96 +401,76 @@ export default function Experience() {
                           </div>
 
                           {/* Photo Wall */}
-                          <div className="mb-5">
-                            <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Gallery</h4>
-                            <div className="relative">
-                              {exp.gallery && exp.gallery.length > 0 ? (
-                                <>
-                                  <div
-                                    ref={(el) => {
-                                      galleryRefs.current[index] = el;
-                                    }}
-                                    className="flex flex-nowrap gap-3 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory"
-                                  >
-                                    {exp.gallery.map((image, i) => (
-                                      <motion.div
-                                        key={image.src}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        transition={{ delay: i * 0.08 }}
-                                        whileHover={{ scale: 1.05, rotate: 0.5 }}
-                                        data-gallery-card
-                                        className="relative aspect-[16/9] flex-none w-full sm:w-[70%] md:w-1/3 rounded-2xl overflow-hidden bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] shadow-inner cursor-pointer group snap-center"
-                                        role="button"
-                                        tabIndex={0}
-                                        onClick={(e: MouseEvent<HTMLDivElement>) =>
-                                          openLightbox(
-                                            exp.company,
-                                            exp.gallery,
-                                            i,
-                                            createOriginFromElement(e.currentTarget)
-                                          )
-                                        }
-                                      >
-                                        <div className="relative w-full h-full">
-                                          <Image
-                                            src={image.src}
-                                            alt={image.alt}
-                                            fill
-                                            sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
-                                            className="object-cover"
-                                          />
-                                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
-                                          <div className="absolute bottom-2 left-2 text-[10px] font-medium text-white bg-black/50 backdrop-blur px-2 py-1 rounded-full">
-                                            {image.alt}
-                                          </div>
-                                        </div>
-                                      </motion.div>
-                                    ))}
-                                  </div>
-
-                                  {exp.gallery.length > 3 && (
-                                    <>
-                                      <button
-                                        type="button"
-                                        className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[var(--surface)]/80 p-2 text-[var(--text-primary)] shadow-lg backdrop-blur hover:bg-[var(--surface)]"
-                                        onClick={() => scrollGallery(index, "prev")}
-                                        aria-label="Scroll previous images"
-                                      >
-                                        <ChevronLeft size={18} />
-                                      </button>
-                                      <button
-                                        type="button"
-                                        className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[var(--surface)]/80 p-2 text-[var(--text-primary)] shadow-lg backdrop-blur hover:bg-[var(--surface)]"
-                                        onClick={() => scrollGallery(index, "next")}
-                                        aria-label="Scroll next images"
-                                      >
-                                        <ChevronRight size={18} />
-                                      </button>
-                                    </>
-                                  )}
-                                </>
-                              ) : (
-                                <div className="flex flex-nowrap gap-3 overflow-x-auto pb-2 scroll-smooth">
-                                  {Array.from({ length: exp.images }).map((_, i) => (
+                          {exp.gallery && exp.gallery.length > 0 && (
+                            <div className="mb-5">
+                              <h4 className="text-sm font-semibold text-[var(--text-primary)] mb-3">Gallery</h4>
+                              <div className="relative">
+                                <div
+                                  ref={(el) => {
+                                    galleryRefs.current[index] = el;
+                                  }}
+                                  className="flex flex-nowrap gap-3 overflow-x-auto pb-2 scroll-smooth snap-x snap-mandatory"
+                                >
+                                  {exp.gallery.map((image, i) => (
                                     <motion.div
-                                      key={i}
-                                      initial={{ opacity: 0, scale: 0.8 }}
+                                      key={image.src}
+                                      initial={{ opacity: 0, scale: 0.9 }}
                                       animate={{ opacity: 1, scale: 1 }}
-                                      transition={{ delay: i * 0.1 }}
-                                      whileHover={{ scale: 1.05, rotate: 1 }}
-                                      className="relative aspect-[16/9] flex-none w-full sm:w-[70%] md:w-1/3 rounded-2xl overflow-hidden bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] shadow-inner cursor-pointer group"
+                                      transition={{ delay: i * 0.08 }}
+                                      whileHover={{ scale: 1.05, rotate: 0.5 }}
+                                      data-gallery-card
+                                      className="relative aspect-[16/9] flex-none w-full sm:w-[70%] md:w-1/3 rounded-2xl overflow-hidden bg-[var(--surface-alt)] backdrop-blur-[var(--card-blur)] -webkit-backdrop-blur-[var(--card-blur)] shadow-inner cursor-pointer group snap-center"
+                                      role="button"
+                                      tabIndex={0}
+                                      onClick={(e: MouseEvent<HTMLDivElement>) =>
+                                        openLightbox(
+                                          exp.company,
+                                          exp.gallery,
+                                          i,
+                                          createOriginFromElement(e.currentTarget)
+                                        )
+                                      }
                                     >
-                                      <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-[var(--text-muted)] group-hover:text-[var(--text-primary)] transition-colors">
-                                        <Camera size={28} />
-                                        <div className="text-xs font-medium">Image {i + 1}</div>
+                                      <div className="relative w-full h-full">
+                                        <Image
+                                          src={image.src}
+                                          alt={image.alt}
+                                          fill
+                                          sizes="(min-width: 1024px) 360px, (min-width: 768px) 45vw, 90vw"
+                                          className="object-cover"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
+                                        <div className="absolute bottom-2 left-2 text-[10px] font-medium text-white bg-black/50 backdrop-blur px-2 py-1 rounded-full">
+                                          {image.alt}
+                                        </div>
                                       </div>
                                     </motion.div>
                                   ))}
                                 </div>
-                              )}
+
+                                {exp.gallery.length > 3 && (
+                                  <>
+                                    <button
+                                      type="button"
+                                      className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[var(--surface)]/80 p-2 text-[var(--text-primary)] shadow-lg backdrop-blur hover:bg-[var(--surface)]"
+                                      onClick={() => scrollGallery(index, "prev")}
+                                      aria-label="Scroll previous images"
+                                    >
+                                      <ChevronLeft size={18} />
+                                    </button>
+                                    <button
+                                      type="button"
+                                      className="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full bg-[var(--surface)]/80 p-2 text-[var(--text-primary)] shadow-lg backdrop-blur hover:bg-[var(--surface)]"
+                                      onClick={() => scrollGallery(index, "next")}
+                                      aria-label="Scroll next images"
+                                    >
+                                      <ChevronRight size={18} />
+                                    </button>
+                                  </>
+                                )}
+                              </div>
                             </div>
-                          </div>
+                          )}
 
                           {/* Links */}
                           <div className="flex flex-wrap gap-3">

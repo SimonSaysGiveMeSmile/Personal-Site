@@ -5,6 +5,11 @@ import Image from "next/image";
 import { useEffect, useMemo } from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
+const isVideoFile = (src: string): boolean => {
+  const videoExtensions = ['.mov', '.MOV', '.mp4', '.MP4', '.webm', '.WEBM'];
+  return videoExtensions.some(ext => src.toLowerCase().endsWith(ext.toLowerCase()));
+};
+
 export interface LightboxOrigin {
   top: number;
   left: number;
@@ -102,14 +107,24 @@ export default function ImageLightbox({
               exit={initialTransform}
               transition={{ duration: 1, ease: [0.25, 1, 0.3, 1] }}
             >
-              <Image
-                src={images[index].src}
-                alt={images[index].alt ?? `${title} gallery image`}
-                fill
-                sizes="(min-width: 1024px) 800px, 90vw"
-                className="object-contain"
-                priority
-              />
+              {isVideoFile(images[index].src) ? (
+                <video
+                  src={images[index].src}
+                  controls
+                  autoPlay
+                  loop
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <Image
+                  src={images[index].src}
+                  alt={images[index].alt ?? `${title} gallery image`}
+                  fill
+                  sizes="(min-width: 1024px) 800px, 90vw"
+                  className="object-contain"
+                  priority
+                />
+              )}
 
               {images.length > 1 && (
                 <>
@@ -140,9 +155,18 @@ export default function ImageLightbox({
                       idx === index ? "ring-2 ring-white/50" : ""
                     }`}
                     onClick={() => onSelect?.(idx)}
-                    aria-label={`View ${title} image ${idx + 1}`}
+                    aria-label={`View ${title} ${idx + 1}`}
                   >
-                    <Image src={img.src} alt={img.alt ?? ""} fill sizes="96px" className="object-cover" />
+                    {isVideoFile(img.src) ? (
+                      <video
+                        src={img.src}
+                        className="w-full h-full object-cover"
+                        muted
+                        playsInline
+                      />
+                    ) : (
+                      <Image src={img.src} alt={img.alt ?? ""} fill sizes="96px" className="object-cover" />
+                    )}
                   </button>
                 ))}
               </div>

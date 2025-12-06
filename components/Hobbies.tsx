@@ -7,12 +7,14 @@ import { Music, Dumbbell, Play, PawPrint } from "lucide-react";
 import Image from "next/image";
 import InteractiveCard from "@/components/InteractiveCard";
 import ImageLightbox, { LightboxImage, LightboxOrigin } from "@/components/ImageLightbox";
+import HoverVideo from "@/components/HoverVideo";
 
 interface HobbyItem {
   name: string;
   description: string;
   mediaType: "image" | "video" | "placeholder";
   media?: string;
+  video?: string;
   gallery?: string[];
 }
 
@@ -84,21 +86,24 @@ export default function Hobbies() {
     {
       name: "Violin",
       description: "Concertmaster energy with solo runs across classical stages and community galas.",
-      mediaType: "image",
+      mediaType: "video",
       media: "/Violin-1.jpeg",
-      gallery: ["/Violin-1.jpeg"],
+      video: "/Violin-2.mov",
+      gallery: ["/Violin-1.jpeg", "/Violin-2.mov"],
     },
     {
       name: "Piano",
       description: "Improvising jazz progressions and arranging cinematic themes.",
-      mediaType: "placeholder",
+      mediaType: "video",
+      video: "/Piano-1.MOV",
+      gallery: ["/Piano-1.MOV"],
     },
     {
       name: "Guitar",
       description: "Acoustic storytelling blending singer-songwriter and fingerstyle.",
-      mediaType: "image",
-      media: "/Guitar-1.jpeg",
-      gallery: ["/Guitar-1.jpeg"],
+      mediaType: "video",
+      video: "/Guitar-1.mov",
+      gallery: ["/Guitar-1.mov"],
     },
     {
       name: "DJ / Mixing",
@@ -113,14 +118,17 @@ export default function Hobbies() {
     {
       name: "Tennis",
       description: "Baseline-heavy rallies and league play to sharpen agility.",
-      mediaType: "image",
+      mediaType: "video",
       media: "/Tennis-1.png",
-      gallery: ["/Tennis-1.png"],
+      video: "/Tennis-2.MOV",
+      gallery: ["/Tennis-1.png", "/Tennis-2.MOV"],
     },
     {
       name: "Golf",
       description: "Early-morning rounds focused on tempo, swing planes, and patience.",
-      mediaType: "placeholder",
+      mediaType: "video",
+      video: "/Golf-1.mov",
+      gallery: ["/Golf-1.mov"],
     },
     {
       name: "Gym",
@@ -207,40 +215,53 @@ export default function Hobbies() {
                 className="overflow-hidden group"
               >
                 {/* Media Display */}
-                <div
-                  className={`relative h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-white/30 via-[#c9a76d]/30 to-[#d5d9e7]/40 ${hobby.media ? "cursor-pointer" : ""}`}
-                  role={hobby.media ? "button" : undefined}
-                  tabIndex={hobby.media ? 0 : undefined}
-                  onClick={(e: MouseEvent<HTMLDivElement>) =>
-                    openGallery(
-                      hobby.name,
-                      hobby.gallery ?? (hobby.media ? [hobby.media] : undefined),
-                      createOriginFromElement(e.currentTarget)
-                    )
-                  }
-                >
-                  {hobby.media && (
-                    <Image
-                      src={hobby.media}
-                      alt={`${hobby.name} showcase`}
-                      fill
-                      sizes="(min-width: 1024px) 250px, (min-width: 768px) 45vw, 90vw"
-                      className="object-cover"
-                    />
-                  )}
-                  {!hobby.media && renderPlaceholder(hobby.name)}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
-                  {hobby.mediaType === "video" && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/50 transition-all duration-300 group-hover:scale-110">
-                        <Play className="text-white ml-1" size={28} />
+                {(hobby.media || hobby.video) && (
+                  <div
+                    className={`relative h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-white/30 via-[#c9a76d]/30 to-[#d5d9e7]/40 cursor-pointer`}
+                    role="button"
+                    tabIndex={0}
+                    onClick={(e: MouseEvent<HTMLDivElement>) =>
+                      openGallery(
+                        hobby.name,
+                        hobby.gallery ?? (hobby.media || hobby.video ? [hobby.media || hobby.video!] : undefined),
+                        createOriginFromElement(e.currentTarget)
+                      )
+                    }
+                  >
+                    {hobby.video ? (
+                      <>
+                        <HoverVideo
+                          src={hobby.video}
+                          alt={`${hobby.name} showcase`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          poster={hobby.media}
+                        />
+                        {!hobby.media && (
+                          <div className="absolute inset-0 bg-black/20" />
+                        )}
+                      </>
+                    ) : hobby.media ? (
+                      <Image
+                        src={hobby.media}
+                        alt={`${hobby.name} showcase`}
+                        fill
+                        sizes="(min-width: 1024px) 250px, (min-width: 768px) 45vw, 90vw"
+                        className="object-cover"
+                      />
+                    ) : null}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
+                    {hobby.mediaType === "video" && !hobby.video && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/50 transition-all duration-300 group-hover:scale-110">
+                          <Play className="text-white ml-1" size={28} />
+                        </div>
                       </div>
+                    )}
+                    <div className="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
+                      {hobby.video ? "Video" : hobby.media ? "Image" : "Placeholder"}
                     </div>
-                  )}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
-                    {hobby.mediaType === "video" ? "Video" : hobby.media ? "Image" : "Placeholder"}
                   </div>
-                </div>
+                )}
 
                 {/* Content */}
                 <div className="p-6">
@@ -275,40 +296,53 @@ export default function Hobbies() {
                 className="overflow-hidden group"
               >
                 {/* Media Display */}
-                <div
-                  className={`relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br from-[#fdf2d2]/40 via-[#d9dfe8]/35 to-[#babfcd]/40 ${hobby.media ? "cursor-pointer" : ""}`}
-                  role={hobby.media ? "button" : undefined}
-                  tabIndex={hobby.media ? 0 : undefined}
-                  onClick={(e: MouseEvent<HTMLDivElement>) =>
-                    openGallery(
-                      hobby.name,
-                      hobby.gallery ?? (hobby.media ? [hobby.media] : undefined),
-                      createOriginFromElement(e.currentTarget)
-                    )
-                  }
-                >
-                  {hobby.media && (
-                    <Image
-                      src={hobby.media}
-                      alt={`${hobby.name} showcase`}
-                      fill
-                      sizes="(min-width: 1024px) 220px, (min-width: 768px) 45vw, 90vw"
-                      className="object-cover"
-                    />
-                  )}
-                  {!hobby.media && renderPlaceholder(hobby.name)}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/5" />
-                  {hobby.mediaType === "video" && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/50 transition-all duration-300 group-hover:scale-110">
-                        <Play className="text-white ml-1" size={24} />
+                {(hobby.media || hobby.video) && (
+                  <div
+                    className={`relative h-56 overflow-hidden rounded-2xl bg-gradient-to-br from-[#fdf2d2]/40 via-[#d9dfe8]/35 to-[#babfcd]/40 cursor-pointer`}
+                    role="button"
+                    tabIndex={0}
+                    onClick={(e: MouseEvent<HTMLDivElement>) =>
+                      openGallery(
+                        hobby.name,
+                        hobby.gallery ?? (hobby.media || hobby.video ? [hobby.media || hobby.video!] : undefined),
+                        createOriginFromElement(e.currentTarget)
+                      )
+                    }
+                  >
+                    {hobby.video ? (
+                      <>
+                        <HoverVideo
+                          src={hobby.video}
+                          alt={`${hobby.name} showcase`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          poster={hobby.media}
+                        />
+                        {!hobby.media && (
+                          <div className="absolute inset-0 bg-black/20" />
+                        )}
+                      </>
+                    ) : hobby.media ? (
+                      <Image
+                        src={hobby.media}
+                        alt={`${hobby.name} showcase`}
+                        fill
+                        sizes="(min-width: 1024px) 220px, (min-width: 768px) 45vw, 90vw"
+                        className="object-cover"
+                      />
+                    ) : null}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/5" />
+                    {hobby.mediaType === "video" && !hobby.video && (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-14 h-14 rounded-full bg-white/30 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/50 transition-all duration-300 group-hover:scale-110">
+                          <Play className="text-white ml-1" size={24} />
+                        </div>
                       </div>
+                    )}
+                    <div className="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
+                      {hobby.video ? "Video" : hobby.media ? "Image" : "Placeholder"}
                     </div>
-                  )}
-                  <div className="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium">
-                    {hobby.mediaType === "video" ? "Video" : hobby.media ? "Image" : "Placeholder"}
                   </div>
-                </div>
+                )}
 
                 {/* Content */}
                 <div className="p-5">

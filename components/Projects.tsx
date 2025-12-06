@@ -121,8 +121,8 @@ export default function Projects() {
               className="overflow-hidden group"
             >
               {/* Enhanced Project Image Display */}
-              <div className="h-48 relative overflow-hidden">
-                {project.image && (
+              {project.image && (
+                <div className="h-48 relative overflow-hidden">
                   <Image
                     src={project.image}
                     alt={project.imageAlt || project.title}
@@ -131,32 +131,19 @@ export default function Projects() {
                     className="object-cover"
                     priority={index < 2}
                   />
-                )}
-                {!project.image && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-[#f5d08a]/50 to-[#d7dae4]/45 opacity-90"></div>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/40"></div>
-                <div className="absolute inset-0 bg-black/30"></div>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <div className="text-4xl font-bold mb-2 opacity-90">
-                      {project.title.substring(0, 2)}
-                    </div>
-                    <div className="text-sm opacity-75 capitalize">
-                      {project.category}
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/40"></div>
+                  <div className="absolute inset-0 bg-black/30"></div>
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="text-white text-center">
+                        <div className="text-lg font-semibold mb-1">View Project</div>
+                        <div className="text-sm opacity-90">Click to explore</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-                {/* Hover overlay */}
-                <div className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="text-white text-center">
-                      <div className="text-lg font-semibold mb-1">View Project</div>
-                      <div className="text-sm opacity-90">Click to explore</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              )}
 
               <div className="p-6">
                 <div className="text-sm font-medium mb-2 text-[var(--text-muted)]">{project.period}</div>

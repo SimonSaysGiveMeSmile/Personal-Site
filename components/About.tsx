@@ -28,7 +28,7 @@ export default function About() {
       icon: <Award size={32} />,
       title: "Academic Excellence",
       description:
-        "Completed an accelerated Cornell M.S. ahead of the typical two-year schedule while balancing startups and research; achieved a high GPA. Scored 133 (~98th percentile) on Mensa’s online IQ challenge.",
+        "Completed an accelerated Cornell M.S. ahead of the typical two-year schedule while balancing startups and research.",
     },
   ];
 
@@ -73,22 +73,12 @@ export default function About() {
           <h3 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-6">Background</h3>
           <div className="space-y-4 text-[var(--text-muted)] leading-relaxed">
             <p>
-              Currently serving as CEO with 80% equity in my latest venture, I&apos;m building at the intersection of AI
-              and physical products. My journey includes founding SkyrisAI (YC top 10%), where I designed a novel flying
-              AI pet concept with emotional intelligence, and FreeRange Drones (YC interviewee), an autonomous delivery
-              network powered by large language models. These experiences taught me to blend robotics, AI, and product
-              design into emotionally engaging systems.
+            I’m a builder at the intersection of AI and physical products, focused on turning emerging technologies into things people can actually touch, play with, and feel connected to. Over the past few years I’ve founded and led several AI-driven hardware projects, including a flying AI companion with emotional intelligence and an autonomous drone network for on-demand services. Those experiences taught me how to blend robotics, AI, and product design into systems that feel intuitive, emotionally engaging, and genuinely useful in the real world.            </p>
+            <p>
+            Before and alongside my startups, I worked across large consumer tech, aerospace systems, and university research labs, where I gained hands-on experience with software, embedded systems, and computer vision. On the technical side, I’ve won hackathons, published work on semantic segmentation and autonomous driving, and contributed to early efforts that brought virtual reality into open-source autonomous-vehicle simulators so researchers could run more realistic human-in-the-loop experiments.
             </p>
             <p>
-              I completed my Master&apos;s in Systems Engineering and Data Science at Cornell on an accelerated timeline,
-              ahead of the program&apos;s usual two-year duration, while managing research teams, startups, and
-              maintaining a high GPA. My technical foundation also includes hands-on experience at ByteDance, Bombardier
-              Aerospace, and UC San Diego&apos;s computer vision lab.
-            </p>
-            <p>
-              Beyond startups, I&apos;ve won hackathons, published research on semantic segmentation and autonomous
-              driving, and contributed to open-source innovations like integrating virtual reality into the CARLA
-              autonomous-vehicle simulator—one of the early VR implementations for that platform.
+            Outside of work, a lot of my energy goes into music, movement, and being around people and animals. I’ve played violin for 20 years and picked up piano and guitar along the way; composing, improvising, or just finding a good acoustic corner to play in is one of my favorite ways to reset. I stay active with regular gym sessions, tennis and golf when I can find a partner, and long walks or hikes to think through problems away from a screen. I love traveling to new places—especially where I can combine nature, local food, and quiet time to reflect—and I have a soft spot for animals, whether it is friends’ pets or the random cats and dogs I meet on the street.
             </p>
           </div>
         </InteractiveCard>

@@ -16,8 +16,24 @@ export default function Hero({ scrollY }: HeroProps) {
       className="relative flex min-h-screen items-center justify-center overflow-hidden pt-32"
       id="hero"
     >
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/Background.JPG)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      />
+      
+      {/* Overlay for light mode - lighter overlay to maintain brightness */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-white/40 via-white/30 to-white/50 hero-overlay-light" />
+      
+      {/* Overlay for dark mode - darker overlay for better contrast */}
+      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/50 via-black/40 to-black/60 hero-overlay-dark" />
       <div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-[2]"
         style={{ transform: `translateY(-${parallaxOffset}px)` }}
       >
         <motion.div

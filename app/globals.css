@@ -52,6 +52,24 @@ body[data-theme="dark"] {
   --accent-onyx: #ffffff;
 }
 
+/* Hero background overlay - light mode */
+.hero-overlay-light {
+  display: block;
+}
+
+.hero-overlay-dark {
+  display: none;
+}
+
+/* Hero background overlay - dark mode */
+body[data-theme="dark"] .hero-overlay-light {
+  display: none;
+}
+
+body[data-theme="dark"] .hero-overlay-dark {
+  display: block;
+}
+
 * {
   margin: 0;
   padding: 0;
